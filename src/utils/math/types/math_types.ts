@@ -1,0 +1,1 @@
+export type Factorial = (n : number) => number;

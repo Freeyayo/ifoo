@@ -1,3 +1,7 @@
-import {add} from './utils/math/normal/add';
-const a: number=10000999;
-export default {a, add};
+/*
+ * @Date: 2020-06-18 01:18:05
+ * @LastEditors: Conghao Cai🔧
+ * @LastEditTime: 2020-06-21 02:58:50
+ * @FilePath: /ifoo/ifoo/src/index.ts
+ */ 
+export * from './utils/math/index';
