@@ -1,8 +1,8 @@
 /*
  * @Date: 2020-06-18 02:06:11
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-21 03:09:06
- * @FilePath: /ifoo/ifoo/build/rollup.config.js
+ * @LastEditTime: 2020-06-21 15:44:57
+ * @FilePath: /spurv/ifoo/build/rollup.config.js
  */ 
 const path = require('path');
 const buble = require('@rollup/plugin-buble'); 
@@ -23,7 +23,7 @@ module.exports = [
       },{
         file: resolveFile('dist/index.iife.js'),
         format: 'iife',
-        name: 'ifoo',
+        name: '$purv',
       }
     ], 
     plugins: [
