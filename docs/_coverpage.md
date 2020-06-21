@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-21 11:17:57
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-21 11:48:14
+ * @LastEditTime: 2020-06-21 18:05:24
  * @FilePath: /spurv/ifoo/docs/_coverpage.md
 --> 
 ![logo](_media/logo.png)
@@ -10,11 +10,11 @@
 
 > JUST **Functions**
 
-- 📦 *tiny*
-- 🚀 *fast*
-- 🔧 *useful*
+- 📦 Tiny 
+- 🚀 Fast 
+- 🔧 Safe 
 
 [GitHub](https://github.com/Freeyayo/ifoo)
-[Get Started](#docsify)
+[Get Started](#introduction)
 
 ![color](#ffffff)
