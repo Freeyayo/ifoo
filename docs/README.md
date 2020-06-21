@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-17 23:50:17
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-22 02:44:09
+ * @LastEditTime: 2020-06-22 03:07:35
  * @FilePath: /spurv/ifoo/docs/README.md
 --> 
 # 🤖️
@@ -40,4 +40,4 @@ factorial(150)                //  ==> 5.713383956445855e+262
 // at most 
 factorial(170)                //  ==> 7.257415615307999e+306 
 ```
-Don't worry if you pass a decimal, string or any wrong input unintentional (or intentional), `factorial` always return a safe number (and a warm reminder). It means that your program may still work fine but you can also get an error infomation
+Don't worry if you pass a decimal, string or any wrong input unintentional (or intentional), `factorial` always return a safe number (and a warm reminder). It means that your program may still work fine but you can also get an error information
