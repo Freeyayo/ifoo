@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-21 17:34:10
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-21 17:42:12
+ * @LastEditTime: 2020-06-22 00:20:52
  * @FilePath: /spurv/ifoo/src/global_data.ts
  */ 
 import './global_types';

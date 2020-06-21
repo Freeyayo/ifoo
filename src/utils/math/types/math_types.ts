@@ -1,1 +1,1 @@
-export type Factorial = (n : number) => number;
+export type Factorial = (n : number) => number | bigint;

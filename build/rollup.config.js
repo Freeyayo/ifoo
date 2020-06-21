@@ -1,12 +1,15 @@
 /*
  * @Date: 2020-06-18 02:06:11
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-21 15:44:57
+ * @LastEditTime: 2020-06-22 01:39:12
  * @FilePath: /spurv/ifoo/build/rollup.config.js
  */ 
 const path = require('path');
 const buble = require('@rollup/plugin-buble'); 
 const typescript = require('@rollup/plugin-typescript');
+const nodeResolve = require('rollup-plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const replace = require('@rollup/plugin-replace');
 
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
@@ -27,8 +30,19 @@ module.exports = [
       }
     ], 
     plugins: [
-      typescript({"lib": ["es2018", "dom"]}),
-      buble()
+      typescript({"lib": ["es2018", "dom"], "target": "esnext"}),
+      buble({
+        transforms:{
+          forOf: false
+        }
+      }),
+      commonjs(),
+      nodeResolve({
+        transforms: { forOf: false }
+      }),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify( 'production' )
+      })
     ],
   },
 ]
