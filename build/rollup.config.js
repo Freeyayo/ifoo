@@ -30,7 +30,7 @@ module.exports = [
       }
     ], 
     plugins: [
-      typescript({"lib": ["es2018", "dom"], "target": "esnext"}),
+      typescript({"lib": ["es2018", "dom", "esnext"], "target": "esnext"}),
       buble({
         transforms:{
           forOf: false
