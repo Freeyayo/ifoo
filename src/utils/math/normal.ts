@@ -7,12 +7,12 @@
 import { Factorial } from './types/math_types';
 import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
 /**
- * @description: 
+ * @description: compute the factorial of input, if there's red line under the BigInt comes from TypeScript, open the comment in BigInt.d.ts
  * @param {number} 
  * @return: number 
  */
 export const factorial: Factorial<number> = (n : number) => {
-    if(isNaN(n) || n < 0 || n > 170 || !!!n){
+    if(isNaN(n) || n < 0 || n > 170){
         console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `number 'n'(0 <= n <= 170) expected`, `and safe answer '1' returned`);
         console.trace();
         return 1;

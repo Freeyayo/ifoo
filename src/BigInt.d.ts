@@ -1,1 +1,1 @@
-declare function BigInt(n: number): bigint
+//declare function BigInt(n: number): bigint
