@@ -1,13 +1,11 @@
 <!--
  * @Date: 2020-06-17 23:50:17
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-22 03:07:35
+ * @LastEditTime: 2020-06-22 23:55:09
  * @FilePath: /spurv/ifoo/docs/README.md
 --> 
 # 🤖️
-
-
-## Brief overview
+## Playing Around 
 Let's start from `factorial`. First import is from **Sprurv**
 ```js
 import { factorial } from 'spurv';
