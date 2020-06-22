@@ -1,0 +1,1 @@
+declare function BigInt(n: number): bigint
