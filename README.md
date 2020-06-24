@@ -24,6 +24,8 @@
 - Data Structure
     - Link List
     - Tuple
+    - Tree
+    - Graph
 - Performance
     - Faster
     - As Less Heap Memory Used AS Possible
