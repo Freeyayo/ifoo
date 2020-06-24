@@ -7,4 +7,4 @@
 * [Get Start](getStart/)
 ** [Install](getStart/install)
 * [API](api/)
-** [Math](api/math)
+** [Math](api/api-math)
