@@ -4,7 +4,6 @@
  * @LastEditTime: 2020-06-22 23:55:09
  * @FilePath: /spurv/ifoo/docs/README.md
 --> 
-# 🤖️
 ## Playing Around 
 Let's start from `factorial`. First import is from **Sprurv**
 ```js

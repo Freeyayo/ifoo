@@ -15,6 +15,6 @@
 - 🔧 Safe 
 
 [GitHub](https://github.com/Freeyayo/ifoo)
-[Get Started](#introduction)
+[Get Started](#main)
 
 ![color](#ffffff)
