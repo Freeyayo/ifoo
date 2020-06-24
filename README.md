@@ -1,5 +1,13 @@
+# Spurv(Beta)
+
 ![avatar](https://raw.githubusercontent.com/Freeyayo/ifoo/master/docs/_media/logo.png)
+
 [![](https://data.jsdelivr.com/v1/package/npm/spurv/badge)](https://www.jsdelivr.com/package/npm/spurv)
+[![npm version](https://badge.fury.io/js/spurv.svg)](https://badge.fury.io/js/spurv)
+
+### The Documentation
+[Documentation Link](https://freeyayo.github.io/ifoo/#/)
+
 ### What is Spurv?
 - A library which includes many useful functions and data structures that JavaScript doesn't have yet.
 - Most of them comes from my daily work and study.
