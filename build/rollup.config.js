@@ -27,6 +27,10 @@ module.exports = [
         file: resolveFile('dist/index.iife.js'),
         format: 'iife',
         name: '$purv',
+      },{
+        file: resolveFile('dist/index.cjs.js'),
+        format: 'cjs',
+        name: 'ifoo',
       }
     ], 
     plugins: [
