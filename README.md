@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/spurv.svg)](https://badge.fury.io/js/spurv)
 
 ### The Documentation
-[The Doc](https://freeyayo.github.io/ifoo/#/)
+[Documentation Link](https://freeyayo.github.io/ifoo/#/)
 
 ### What is Spurv?
 - A library which includes many useful functions and data structures that JavaScript doesn't have yet.
