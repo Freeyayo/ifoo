@@ -5,6 +5,7 @@
 [![](https://data.jsdelivr.com/v1/package/npm/spurv/badge)](https://www.jsdelivr.com/package/npm/spurv)
 [![npm version](https://badge.fury.io/js/spurv.svg)](https://badge.fury.io/js/spurv)
 
+### The Documentation
 [The Doc](https://freeyayo.github.io/ifoo/#/)
 
 ### What is Spurv?
