@@ -1,6 +1,6 @@
 # Spurv(Beta)
 
-![avatar](https://raw.githubusercontent.com/Freeyayo/ifoo/master/docs/_media/logo.png)
+![avatar](logo.png)
 
 [![](https://data.jsdelivr.com/v1/package/npm/spurv/badge)](https://www.jsdelivr.com/package/npm/spurv)
 [![npm version](https://badge.fury.io/js/spurv.svg)](https://badge.fury.io/js/spurv)
