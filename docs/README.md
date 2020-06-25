@@ -7,7 +7,10 @@
 ## Playing Around 
 Let's start from `factorial`. First import is from **Sprurv**
 ```js
+// ES Module
 import { factorial } from 'spurv';
+// CommonJS
+const { factorial } = require('spurv');
 ```
 If using CDN, you can have it with:
 ```js

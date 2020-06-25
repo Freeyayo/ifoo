@@ -4,4 +4,7 @@
  * @LastEditTime: 2020-06-21 02:58:22
  * @FilePath: /ifoo/ifoo/src/utils/math/index.ts
  */ 
-export * from './normal';
+export {
+    factorial,
+    union
+} from './normal';

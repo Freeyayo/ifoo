@@ -24,3 +24,8 @@ export const compose: PureFunctionCompose<Function> = (...fns) => x => fns.reduc
     }
 }, x);
 
+export const flatten = arr => {
+    return arr.reduce((acc, item) => {
+        return Array.isArray(item)?acc.concat(flatten(item)):acc.concat(item);
+    },[])
+}

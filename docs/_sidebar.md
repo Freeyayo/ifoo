@@ -8,3 +8,4 @@
 ** [Install](getStart/install)
 * [API](api/)
 ** [Math](api/api-math)
+** [Helper](api/api-helper)

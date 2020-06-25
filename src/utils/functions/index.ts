@@ -6,4 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \ifoo\src\utils\functions\index.ts
  */ 
-export * from './normal';
+export {
+    compose,
+    flatten
+} from './normal';

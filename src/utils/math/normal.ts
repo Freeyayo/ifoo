@@ -4,7 +4,11 @@
  * @LastEditTime: 2020-06-22 02:47:17
  * @FilePath: /spurv/ifoo/src/utils/math/normal.ts
  */ 
-import { Factorial } from './types/math_types';
+import { 
+    Factorial,
+    Union
+} from './types/math_types';
+import { flatten } from '../functions/index';
 import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
 /**
  * @description: compute the factorial of input, if there's red line under the BigInt comes from TypeScript, open the comment in BigInt.d.ts
@@ -33,3 +37,7 @@ export const factorial: Factorial<number> = (n : number) => {
     }
 }
 
+export const union: Union<number> = (...sets: Array<number>) => {
+    const all: Array<number> = sets.map(set => set);
+    return Array.from(new Set(flatten(all)));
+}
