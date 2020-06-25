@@ -5,7 +5,7 @@
  * @FilePath: /spurv/ifoo/docs/README.md
 --> 
 ## Playing Around 
-Let's start from `factorial`. First import is from **Sprurv**
+Let's start from `factorial`. First import it from **Sprurv**
 ```js
 // ES Module
 import { factorial } from 'spurv';
