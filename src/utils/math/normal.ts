@@ -37,7 +37,15 @@ export const factorial: Factorial<number> = (n : number) => {
     }
 }
 
-export const union: Union<number> = (...sets: Array<number>) => {
-    const all: Array<number> = sets.map(set => set);
+export const union: Union<number> = (...sets) => {
+    const all: Array<Array<number| null>> = sets.map(set =>{
+        if(Array.isArray(set)){
+            return set;
+        }else{
+            console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
+            console.trace();
+            return [];
+        }
+    });
     return Array.from(new Set(flatten(all)));
 }

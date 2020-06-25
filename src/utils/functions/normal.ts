@@ -6,7 +6,10 @@
  * @FilePath: \ifoo\src\utils\functions\normal.ts
  */ 
 import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
-import { PureFunctionCompose } from '../functions/types/function_types';
+import { 
+    PureFunctionCompose,
+    Flatten
+ } from '../functions/types/function_types';
 /**
  * @description: a pipeline for functions runs a 'left to right' order
  * @param {funtion} 
@@ -24,8 +27,11 @@ export const compose: PureFunctionCompose<Function> = (...fns) => x => fns.reduc
     }
 }, x);
 
-export const flatten = arr => {
-    return arr.reduce((acc, item) => {
-        return Array.isArray(item)?acc.concat(flatten(item)):acc.concat(item);
-    },[])
+export const flatten: Flatten<number> = (arr: []) => {
+    if(Array.isArray(arr)){
+        return arr.reduce((acc, item) => Array.isArray(item)? acc.concat(flatten(item)): acc.concat(item), []);
+    }else{
+        console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `flatten accepts an array`, `and safe answer '[]' returned`);
+        return [];
+    }
 }

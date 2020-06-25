@@ -6,4 +6,6 @@
  * @Description: In User Settings Edit
  * @FilePath: \ifoo\src\utils\functions\types\function_types.ts
  */ 
-export type PureFunctionCompose<T> = (...f: T[]) => (x:any) => T; 
+export type PureFunctionCompose<T> = (...f: T[]) => (x:any) => T;
+
+export type Flatten<T> = (arr: Array<Array<T>> | T[]) => T[];
