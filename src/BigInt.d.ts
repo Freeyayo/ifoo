@@ -5,7 +5,3 @@
  * @FilePath: /spurv/ifoo/src/BigInt.d.ts
  */ 
 declare function BigInt(n: number): bigint
-
-export {
-    BigInt
-}
