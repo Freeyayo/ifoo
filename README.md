@@ -19,7 +19,7 @@
 
 - Helper Functions 
     - Math
-    - Functional Styled
+    - Functional Programming
     - Object/Array Iteration
 - Data Structure
     - Link List
