@@ -6,5 +6,6 @@
  */ 
 export {
     factorial,
+    intersect,
     union
 } from './normal';

@@ -4,8 +4,10 @@
  * @LastEditTime: 2020-06-22 02:47:17
  * @FilePath: /spurv/ifoo/src/utils/math/normal.ts
  */ 
+import { BigInt } from '../../BigInt'
 import { 
     Factorial,
+    Intersect,
     Union
 } from './types/math_types';
 import { flatten } from '../functions/index';
@@ -37,7 +39,22 @@ export const factorial: Factorial<number> = (n : number) => {
     }
 }
 
+export const intersect: Intersect<number> = (...sets) => {
+    if(sets.length === 0)return [null]
+    const all = sets.reduce((ci, set) => {
+        if(Array.isArray(ci) && Array.isArray(set)){
+            return ci.filter(item => set.includes(item));
+        }else{
+            console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
+            console.trace();
+            return [];
+        }
+    })
+    return Array.from(new Set(flatten(all)));
+}
+
 export const union: Union<number> = (...sets) => {
+    if(sets.length === 0)return [null]
     const all: Array<Array<number| null>> = sets.map(set =>{
         if(Array.isArray(set)){
             return set;
