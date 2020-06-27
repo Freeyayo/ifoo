@@ -11,6 +11,8 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const replace = require('@rollup/plugin-replace');
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx', '.d.ts'];
+
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
@@ -42,8 +44,9 @@ module.exports = [
       }),
       commonjs(),
       nodeResolve({
-        transforms: { forOf: false }
-      }),
+        transforms: { forOf: false },
+        extensions
+        }),
       replace({
         'process.env.NODE_ENV': JSON.stringify( 'production' )
       })
