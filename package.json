@@ -6,7 +6,8 @@
   "types": "./src/BigInt.d.ts",
   "scripts": {
     "dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js",
-    "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js"
+    "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
+    "test": "jest ./test/index.test.js --notify"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "@rollup/plugin-node-resolve": "^8.0.1",
     "@rollup/plugin-replace": "^2.3.3",
     "@rollup/plugin-typescript": "^4.1.2",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
     "rollup": "^2.7.6",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-serve": "^1.0.1",

@@ -20,7 +20,6 @@ import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
 export const factorial: Factorial<number> = (n : number) => {
     if(isNaN(n) || n < 0 || n > 170){
         console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `number 'n'(0 <= n <= 170) expected`, `and safe answer '1' returned`);
-        console.trace();
         return 1;
     }
     if(n === 0)return 1;
@@ -46,7 +45,6 @@ export const intersect: Intersect<number> = (...sets) => {
             return ci.filter(item => set.includes(item));
         }else{
             console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
-            console.trace();
             return [];
         }
     })
@@ -60,7 +58,6 @@ export const union: Union<number> = (...sets) => {
             return set;
         }else{
             console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
-            console.trace();
             return [];
         }
     });
