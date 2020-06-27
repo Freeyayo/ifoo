@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "lib": ["ES2020","ES5","ES6","ES7"]
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

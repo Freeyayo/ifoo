@@ -4,6 +4,7 @@
  * @LastEditTime: 2020-06-22 02:47:17
  * @FilePath: /spurv/ifoo/src/utils/math/normal.ts
  */
+// import 'BigInt';
 import { 
     Factorial,
     Intersect,
