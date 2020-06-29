@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-22 23:44:01
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-22 23:56:29
+ * @LastEditTime: 2020-06-30 01:45:24
  * @FilePath: /spurv/ifoo/docs/_sidebar.md
 --> 
 * [Get Start](getStart/)
@@ -9,3 +9,4 @@
 * [API](api/)
 ** [Math](api/api-math)
 ** [Helper](api/api-helper)
+** [Data Structure](api/api-data)
