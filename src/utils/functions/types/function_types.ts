@@ -13,7 +13,7 @@ export type PureFunctionCompose<T> = (...f: T[]) => (x: any) => T;
 export type FlattenOptions = {
   /*
     Limit how many levels of the array will be flattened.
-    Default: 0 which will flatten all levels
+    Default: POSITIVE_INFINITY which will flatten all levels
    */
   levels: number;
 };
