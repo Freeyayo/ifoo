@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-01 00:00:44
+ * @LastEditTime: 2020-07-01 00:09:54
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -55,29 +55,39 @@ export const deserialize: DeserializeBSTree = (data) => {
   };
 
   const queue: TreeNode<number>[] = [];
-  const data_array: string[] = data.slice(1, -1).split(",");
-  const cn: TreeNode<number> | string = data_array.shift();
+  try{
+    const data_array: string[] = data.slice(1, -1).split(",");
+    const cn: TreeNode<number> | string = data_array.shift();
 
-  if(cn === "null")return null;
+    if(cn === "null")return null;
 
-  let root: TreeNode<number> = bstreeNode(Number(cn));
-  queue.push(root);
-  
-  while(queue.length){
-    const currentLevelSize: number = queue.length;
-    for(let i = 0; i < currentLevelSize; i++){
-      const currentNode: TreeNode<number> = queue.shift();
-      if(currentNode){
-        const l: TreeNode<number> = node(data_array.shift());
-        const r: TreeNode<number> = node(data_array.shift());
-        currentNode.left = l;
-        currentNode.right = r;
-        if(l !== null)queue.push(l);
-        if(r !== null)queue.push(r);
+    let root: TreeNode<number> = bstreeNode(Number(cn));
+    queue.push(root);
+    
+    while(queue.length){
+      const currentLevelSize: number = queue.length;
+      for(let i = 0; i < currentLevelSize; i++){
+        const currentNode: TreeNode<number> = queue.shift();
+        if(currentNode){
+          const l: TreeNode<number> = node(data_array.shift());
+          const r: TreeNode<number> = node(data_array.shift());
+          currentNode.left = l;
+          currentNode.right = r;
+          if(l !== null)queue.push(l);
+          if(r !== null)queue.push(r);
+        }
       }
     }
+
+    return root;
+  }catch(e){
+    console.log(
+      CONSOLE_HEADER_TEXT,
+      CONSOLE_HEADER_STYLE,
+      `make sure you provided a valid serialized string to function deserialize`
+    )
+    console.log(e)
   }
-  return root;
 }
 
 export const flatten: Flatten<number> = (
@@ -117,7 +127,8 @@ export const serialize: SerializeBSTree = (root) => {
   const queue: Array<TreeNode<number>> = [];
   queue.push(root);
 
-  while(queue.length){
+  try{
+    while(queue.length){
       const currentLevelSize: number = queue.length;
       for(let i = 0; i < currentLevelSize; i++){
           const currentNode: TreeNode<number> = queue.shift();
@@ -130,9 +141,20 @@ export const serialize: SerializeBSTree = (root) => {
           queue.push(currentNode.left)
           queue.push(currentNode.right)
       }
+    }
+
+    while(ret[ret.length-1] === "null"){
+      ret.pop();
+    }
+
+    return "[" + ret.toString() + "]";
+
+  }catch(e){
+    console.log(
+      CONSOLE_HEADER_TEXT,
+      CONSOLE_HEADER_STYLE,
+      `make sure you pass a binary tree to function serialize`
+    )
+    console.log(e)
   }
-  while(ret[ret.length-1] === "null"){
-    ret.pop();
-  }
-  return "[" + ret.toString() + "]";
 }
