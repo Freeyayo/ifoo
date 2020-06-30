@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-28 23:02:23
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-01 00:37:24
+ * @LastEditTime: 2020-07-01 00:39:46
  * @FilePath: /spurv/ifoo/docs/api/api-helper.md
 --> 
 ----
@@ -24,11 +24,13 @@ c(string) //SPURV !
 ```js
 const serializedTree = "[10,2,12,1,3,11,13]";
 
-deserialize(serializedTree) //           10
-                            //          /  \
-                            //         2    12
-                            //        / \   / \ 
-                            //       1   3 11  13
+deserialize(serializedTree)
+
+//           10
+//          /  \
+//         2    12
+//        / \   / \ 
+//       1   3 11  13
 ```
 ----
 ## F
