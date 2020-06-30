@@ -1,9 +1,9 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-06-22 21:08:03
- * @LastEditors: Please set LastEditors
- * @FilePath: \ifoo\src\utils\functions\normal.ts
+ * @LastEditTime: 2020-07-01 00:00:44
+ * @LastEditors: Conghao Cai🔧
+ * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
 
 import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from "../../global_data";
@@ -11,7 +11,13 @@ import {
   PureFunctionCompose,
   Flatten,
   FlattenOptions,
+  SerializeBSTree,
+  DeserializeBSTree
 } from "../functions/types/function_types";
+
+import { TreeNode } from '../datastructure/types/data_interfaces';
+import { GenerateBSTreeNode } from '../datastructure/types/data_types';
+
 /**
  * @description: a pipeline for functions runs a 'left to right' order
  * @param {funtion}
@@ -33,6 +39,46 @@ export const compose: PureFunctionCompose<Function> = (...fns) => (x) =>
       console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, e);
     }
   }, x);
+
+export const deserialize: DeserializeBSTree = (data) => {
+  if(data === null)return null;
+
+  const bstreeNode: GenerateBSTreeNode<number> = (val) => {
+    // clean Object gets rid of methods on prototype chain
+    const cleanObject: object = Object.create(null);
+    return Object.assign(cleanObject,{val, left: null, right: null});
+  };
+
+  const node = (val: TreeNode<number> | string): TreeNode<number> => {
+    if(val === "null"|| val === undefined)return null;
+    return bstreeNode(Number(val));
+  };
+
+  const queue: TreeNode<number>[] = [];
+  const data_array: string[] = data.slice(1, -1).split(",");
+  const cn: TreeNode<number> | string = data_array.shift();
+
+  if(cn === "null")return null;
+
+  let root: TreeNode<number> = bstreeNode(Number(cn));
+  queue.push(root);
+  
+  while(queue.length){
+    const currentLevelSize: number = queue.length;
+    for(let i = 0; i < currentLevelSize; i++){
+      const currentNode: TreeNode<number> = queue.shift();
+      if(currentNode){
+        const l: TreeNode<number> = node(data_array.shift());
+        const r: TreeNode<number> = node(data_array.shift());
+        currentNode.left = l;
+        currentNode.right = r;
+        if(l !== null)queue.push(l);
+        if(r !== null)queue.push(r);
+      }
+    }
+  }
+  return root;
+}
 
 export const flatten: Flatten<number> = (
   arr: [],
@@ -64,3 +110,29 @@ export const flatten: Flatten<number> = (
     []
   );
 };
+
+export const serialize: SerializeBSTree = (root) => {
+  if(root === null) return null;
+  const ret: Array<number | string> = [];
+  const queue: Array<TreeNode<number>> = [];
+  queue.push(root);
+
+  while(queue.length){
+      const currentLevelSize: number = queue.length;
+      for(let i = 0; i < currentLevelSize; i++){
+          const currentNode: TreeNode<number> = queue.shift();
+          if(currentNode === null){
+              ret.push("null");
+              continue;
+          }else{
+              ret.push(currentNode.val)
+          }
+          queue.push(currentNode.left)
+          queue.push(currentNode.right)
+      }
+  }
+  while(ret[ret.length-1] === "null"){
+    ret.pop();
+  }
+  return "[" + ret.toString() + "]";
+}
