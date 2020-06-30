@@ -1,11 +1,16 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:42:59
- * @LastEditTime: 2020-06-22 20:58:07
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-06-30 23:17:32
+ * @LastEditors: Conghao Cai🔧
  * @Description: In User Settings Edit
- * @FilePath: \ifoo\src\utils\functions\types\function_types.ts
+ * @FilePath: /spurv/ifoo/src/utils/functions/types/function_types.ts
  */
+import { TreeNode } from '../../datastructure/types/data_interfaces';
+
+export type SerializeBSTree = (root: TreeNode<number>) => string | null;
+
+export type DeserializeBSTree = (data: string) => TreeNode<number>;
 
 export type PureFunctionCompose<T> = (...f: T[]) => (x: any) => T;
 

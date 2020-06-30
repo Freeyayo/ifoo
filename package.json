@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js",
     "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
-    "test": "jest --notify"
+    "test": "jest ./test/index.test.js --notify",
+    "test:kevin": "jest ./test/data_structure.test.js --notify"
   },
   "repository": {
     "type": "git",
