@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-01 00:09:54
+ * @LastEditTime: 2020-07-02 01:01:33
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -61,7 +61,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
     if(cn === "null")return null;
 
-    let root: TreeNode<number> = bstreeNode(Number(cn));
+    const root: TreeNode<number> = bstreeNode(Number(cn));
     queue.push(root);
     
     while(queue.length){

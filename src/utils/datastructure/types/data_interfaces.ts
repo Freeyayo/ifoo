@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-29 23:04:29
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-29 23:49:48
+ * @LastEditTime: 2020-07-01 23:48:50
  * @FilePath: /spurv/ifoo/src/utils/datastructure/types/data_interfaces.ts
  */
 
@@ -30,7 +30,7 @@ export interface IDictionary {
   clear(): void;
   containsKey(key: string): boolean;
   containsValue(value: any): boolean;
-  entries(): string[];
+  entries(): KeyValue;
   get(key: string): any;
   keys(): string[];
   remove(key: string): void;
