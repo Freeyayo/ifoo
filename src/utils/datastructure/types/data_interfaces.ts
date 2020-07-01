@@ -26,18 +26,13 @@ export interface IDictionary {
   // Number of items in the dictionary
   length: number;
 
-  // Add a new key value pair
   add(key: string, value: any): void;
-
-  // Get value by key
+  clear(): void;
+  containsKey(key: string): boolean;
+  containsValue(value: any): boolean;
+  entries(): string[];
   get(key: string): any;
-
-  // Remove a key
-  remove(key: string): void;
-
-  // Return an array of keys
   keys(): string[];
-
-  // Return an array of values
+  remove(key: string): void;
   values(): any[];
 }
