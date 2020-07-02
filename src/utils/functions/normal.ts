@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-02 01:01:33
+ * @LastEditTime: 2020-07-03 00:12:25
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -24,7 +24,7 @@ import { GenerateBSTreeNode } from '../datastructure/types/data_types';
  * @return: a composed function
  */
 
-export const compose: PureFunctionCompose<Function> = (...fns) => (x) =>
+export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
   fns.reduce((acc, f) => {
     if (typeof f !== "function" || f.length !== 1) {
       console.log(
@@ -45,7 +45,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
   const bstreeNode: GenerateBSTreeNode<number> = (val) => {
     // clean Object gets rid of methods on prototype chain
-    const cleanObject: object = Object.create(null);
+    const cleanObject: Record<any, unknown> = Object.create(null);
     return Object.assign(cleanObject,{val, left: null, right: null});
   };
 

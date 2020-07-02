@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-29 20:37:46
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-02 00:57:03
+ * @LastEditTime: 2020-07-03 00:01:13
  * @FilePath: /spurv/ifoo/src/utils/datastructure/tree.ts
  */
 import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from "../../global_data";
@@ -22,7 +22,7 @@ export const bstree: BSTree<number> = (rootValue) => {
     //generate a bstree node by passing a value
     const bstreeNode: GenerateBSTreeNode<number> = (val) => {
         // clean Object gets rid of methods on prototype chain
-        const cleanObject: Object = Object.create(null);
+        const cleanObject: Record<any, unknown>= Object.create(null);
         return Object.assign(cleanObject,{val, left: null, right: null});
     };
     // insert a new node to the bstree
