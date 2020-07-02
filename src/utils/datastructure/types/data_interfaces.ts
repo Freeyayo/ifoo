@@ -30,7 +30,7 @@ export interface IDictionary {
   clear(): void;
   containsKey(key: string): boolean;
   containsValue(value: any): boolean;
-  entries(): KeyValue;
+  entries(): KeyValue[];
   get(key: string): any;
   keys(): string[];
   remove(key: string): void;
