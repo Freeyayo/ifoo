@@ -1,5 +1,12 @@
+<!--
+ * @Date: 2020-06-28 23:02:23
+ * @LastEditors: Conghao Cai🔧
+ * @LastEditTime: 2020-07-04 02:04:48
+ * @FilePath: /spurv/ifoo/docs/api/api-math.md
+--> 
 ----
 ## F
+#### factorial
 > `factorial: Factorial<T extends number> = (n : T) => T | bigint` **0.0.1**
 >> Do a factorial and always safely return
 ```js
@@ -9,6 +16,7 @@ factorial("spurv")  // 1
 ```
 ----
 ## I
+#### intersect
 > `intersect: Intersect<T extends number> = (...sets: T[][]) => T[]` **0.0.1**
 >> The set of two sets which contains same items in two sets. In Spurv, `intersect` accepts arrays in current version, and you can pass as many arrays as you wish.
 ```js
@@ -27,6 +35,7 @@ intersect(arr1, arr2, arr3);    //[2]
 ```
 ----
 ## U
+#### union
 > `union: Union<T extends number> = (...sets: T[][]) => T[]` **0.0.1**
 >> The union of any two sets consists of those elements that are in one or the other or in both given sets, but in Spurv, `union` accepts arrays in current version, and you can pass as many arrays as you wish.
 ```js
