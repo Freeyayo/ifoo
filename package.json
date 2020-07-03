@@ -9,7 +9,7 @@
     "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
     "lintonly": "npx eslint src/**",
     "test": "npx eslint src/** && jest ./test/index.test.js --notify",
-    "test:kevin": "jest ./test/data_structure.test.js --notify"
+    "test:kevin": "jest ./test/dictionary.test.js --notify"
   },
   "repository": {
     "type": "git",
