@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-07-04 00:33:08
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-04 01:03:48
+ * @LastEditTime: 2020-07-04 03:13:52
  * @FilePath: /spurv/ifoo/test/sort.test.js
  */ 
 import { sortarrayby } from '../src/index';
@@ -58,6 +58,12 @@ test("sortarrayby([3,4,5,1,2,3])", () => {
     const array = [3,4,5,1,2,3];
     const expected = JSON.stringify([1,2,3,3,4,5]);
     expect(JSON.stringify(sortarrayby(array))).toBe(expected);
+});
+
+test("sortarrayby([3,4,5,1,2,3],{rev: true})", () => {
+    const array = [3,4,5,1,2,3];
+    const expected = JSON.stringify([5,4,3,3,2,1]);
+    expect(JSON.stringify(sortarrayby(array,{rev: true}))).toBe(expected);
 });
 
 test("sortarrayby(nested, { tar: ['bio','other','age'], rev: false})", () => {

@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-04 00:40:21
+ * @LastEditTime: 2020-07-04 03:13:28
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -161,6 +161,9 @@ export const serialize: SerializeBSTree = (root) => {
 }
 
 export const sortarrayby: SortArrayBy = (arr, options = { tar: [], rev: false}) => {
+  if(!options.tar){
+    options.tar = [];
+  }
   const _sort = (a: number|string|Record<string, unknown> ,b: number|string|Record<string, unknown>, r=options.rev) => {
     if(r){
       return a < b? 1: a > b? -1: 0;
@@ -193,5 +196,7 @@ export const sortarrayby: SortArrayBy = (arr, options = { tar: [], rev: false}) 
         return arr.sort( _nestedSort );
       }
     }
+  }else{
+    throw new TypeError('make sure you passed an array');
   }
 }
