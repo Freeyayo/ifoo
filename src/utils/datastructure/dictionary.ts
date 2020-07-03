@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-07-02 22:05:46
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-02 23:45:53
+ * @LastEditTime: 2020-07-03 22:01:47
  * @FilePath: /spurv/ifoo/src/utils/datastructure/dictionary.ts
  */ 
 import { KeyValue, IDictionary } from "./types/data_interfaces";
@@ -95,6 +95,6 @@ class Dictionary implements IDictionary {
     }
 }
 
-export const dictionary = () => {
+export const dictionary = (): IDictionary => {
     return new Dictionary();
 };
