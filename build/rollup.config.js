@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-06-18 02:06:11
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-06-22 01:39:12
+ * @LastEditTime: 2020-07-02 01:00:10
  * @FilePath: /spurv/ifoo/build/rollup.config.js
  */ 
 const path = require('path');
@@ -10,6 +10,7 @@ const typescript = require('@rollup/plugin-typescript');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const replace = require('@rollup/plugin-replace');
+const { eslint } = require('rollup-plugin-eslint');
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx', '.d.ts'];
 
@@ -36,6 +37,7 @@ module.exports = [
       }
     ], 
     plugins: [
+      eslint(),
       typescript({"lib": ["es2018", "dom", "esnext"], "target": "esnext"}),
       buble({
         transforms:{

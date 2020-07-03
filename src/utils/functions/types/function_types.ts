@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:42:59
- * @LastEditTime: 2020-06-30 23:17:32
+ * @LastEditTime: 2020-07-03 23:22:07
  * @LastEditors: Conghao Cai🔧
  * @Description: In User Settings Edit
  * @FilePath: /spurv/ifoo/src/utils/functions/types/function_types.ts
@@ -27,3 +27,10 @@ export type Flatten<T> = (
   arr: Array<Array<T>> | T[],
   options?: FlattenOptions
 ) => T[];
+
+type SortArrayByOptions = {
+  tar: Array<string>,
+  rev: boolean
+}
+
+export type SortArrayBy = (arr: any[], options?: SortArrayByOptions) => any[];

@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-01 00:09:54
+ * @LastEditTime: 2020-07-04 00:40:21
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -12,7 +12,8 @@ import {
   Flatten,
   FlattenOptions,
   SerializeBSTree,
-  DeserializeBSTree
+  DeserializeBSTree,
+  SortArrayBy
 } from "../functions/types/function_types";
 
 import { TreeNode } from '../datastructure/types/data_interfaces';
@@ -24,7 +25,7 @@ import { GenerateBSTreeNode } from '../datastructure/types/data_types';
  * @return: a composed function
  */
 
-export const compose: PureFunctionCompose<Function> = (...fns) => (x) =>
+export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
   fns.reduce((acc, f) => {
     if (typeof f !== "function" || f.length !== 1) {
       console.log(
@@ -45,7 +46,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
   const bstreeNode: GenerateBSTreeNode<number> = (val) => {
     // clean Object gets rid of methods on prototype chain
-    const cleanObject: object = Object.create(null);
+    const cleanObject: Record<any, unknown> = Object.create(null);
     return Object.assign(cleanObject,{val, left: null, right: null});
   };
 
@@ -61,7 +62,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
     if(cn === "null")return null;
 
-    let root: TreeNode<number> = bstreeNode(Number(cn));
+    const root: TreeNode<number> = bstreeNode(Number(cn));
     queue.push(root);
     
     while(queue.length){
@@ -156,5 +157,41 @@ export const serialize: SerializeBSTree = (root) => {
       `make sure you pass a binary tree to function serialize`
     )
     console.log(e)
+  }
+}
+
+export const sortarrayby: SortArrayBy = (arr, options = { tar: [], rev: false}) => {
+  const _sort = (a: number|string|Record<string, unknown> ,b: number|string|Record<string, unknown>, r=options.rev) => {
+    if(r){
+      return a < b? 1: a > b? -1: 0;
+    }else{
+      return a < b? -1: a > b? 1: 0;
+    }
+  }
+  const _nestedSort = (a: Record<string, any> ,b: Record<string, any>, r=options.rev) => {
+    const target: string[] = options.tar;
+    const target_x: any = (x: Record<string, any>) => {
+      return target.reduce((acc, cl) => {
+        return acc[cl];
+      }, x)
+    }
+    
+    const target_a: string|number = target_x(a);
+    const target_b: string|number = target_x(b);
+    
+    if(r){
+      return target_a < target_b? 1: target_a > target_b? -1: 0;
+    }else{
+      return target_a < target_b? -1: target_a > target_b? 1: 0;
+    }
+  }
+  if(Array.isArray(arr)){
+    if(Array.isArray(options.tar)){
+      if(options.tar.length === 0){
+        return arr.sort( _sort );
+      }else{
+        return arr.sort( _nestedSort );
+      }
+    }
   }
 }
