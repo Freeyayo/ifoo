@@ -18,14 +18,16 @@ import { KeyValue, IDictionary } from "./types/data_interfaces";
  */
 class Dictionary implements IDictionary {
     // The object that actualy stored the key-values
-    private _items: KeyValue = {};
-    private _length = 0;
+    private _items: KeyValue;
+    private _length: number;
 
-    get length() {
+    get length(): number {
         return this._length;
     }
 
     constructor() {
+        this._items = {}
+        this._length = 0;
         // TODO: Accept an object or array for initialization
     }
 
@@ -40,7 +42,7 @@ class Dictionary implements IDictionary {
     }
 
     // Add a key value to the dictionary
-    add(key: any, value: any) {
+    add(key: any, value: any): void {
         const keyString: string = this._getKeyAsString(key);
         if (!(keyString in this._items)) {
             this._length++;
@@ -49,7 +51,7 @@ class Dictionary implements IDictionary {
     }
 
     // Clear the dictionary
-    clear() {
+    clear(): void {
         this._items = {};
         this._length = 0;
     }
@@ -97,7 +99,7 @@ class Dictionary implements IDictionary {
     }
 }
 
-export const dictionary = () => {
-    const d = new Dictionary();
+export const dictionary = (): IDictionary => {
+    const d: IDictionary = new Dictionary();
     return d
 };
