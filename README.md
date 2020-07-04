@@ -57,7 +57,8 @@
 2. Check the files in the dist folder, there will be 3 files located. They stand for using in the `browser`, `commonJS` and `es module` respectively.
 
 ### Test
-I strongly recommend developers could follow this naming rule by create a new test command:
+I strongly recommend developers could follow this naming rule by creating a new test command:
+
 `"test:[developer]": "jest ./test/[module].test.js --notify"`
 
 ### More & About
