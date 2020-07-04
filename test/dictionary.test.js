@@ -53,3 +53,20 @@ test("remove()", () => {
   expect(d.containsKey(5)).toBe(false);
   expect(d.containsValue("v1")).toBe(false);
 });
+
+
+test("length", () => {
+  const d = dictionary();
+  d.add(5, "v1");
+  d.add("12", 5);
+  d.add("8", 5);
+  expect(d.length).toBe(3);
+});
+
+test("prvent set length", () => {
+  const d = dictionary();
+  const t = () => {
+    d.length = 10
+  };
+  expect(t).toThrow(TypeError);
+});
