@@ -8,8 +8,9 @@
  */ 
 export {
     compose,
-    flatten,
-    serialize,
     deserialize,
+    flatten,
+    relationtree,
+    serialize,
     sortarrayby
 } from './normal';
