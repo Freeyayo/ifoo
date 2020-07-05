@@ -3,7 +3,7 @@
  * @LastEditors: Conghao Cai🔧
  * @LastEditTime: 2020-07-03 22:08:57
  * @FilePath: /spurv/ifoo/src/utils/datastructure/dictionary.ts
- */ 
+ */
 import { KeyValue, IDictionary } from "./types/data_interfaces";
 
 /**
@@ -18,16 +18,20 @@ import { KeyValue, IDictionary } from "./types/data_interfaces";
  */
 class Dictionary implements IDictionary {
     // The object that actualy stored the key-values
-    _items: KeyValue = {};
+    private _items: KeyValue;
+    private _length: number;
 
-    // So you can do mydictionary.length
-    length = 0;
+    get length(): number {
+        return this._length;
+    }
 
     constructor() {
+        this._items = {}
+        this._length = 0;
         // TODO: Accept an object or array for initialization
     }
 
-    _getKeyAsString(key: any): string {
+    private _getKeyAsString(key: any): string {
         if (key === undefined) {
             throw new TypeError("Spurv: key is undefined");
         }
@@ -38,18 +42,18 @@ class Dictionary implements IDictionary {
     }
 
     // Add a key value to the dictionary
-    add(key: any, value: any) {
+    add(key: any, value: any): void {
         const keyString: string = this._getKeyAsString(key);
         if (!(keyString in this._items)) {
-            this.length++;
+            this._length++;
         }
         this._items[keyString] = value;
     }
 
     // Clear the dictionary
-    clear() {
+    clear(): void {
         this._items = {};
-        this.length = 0;
+        this._length = 0;
     }
 
     // Check if the dictionary contains a key
@@ -74,7 +78,7 @@ class Dictionary implements IDictionary {
     remove(key: any): void {
         const keyString: string = this._getKeyAsString(key);
         if (keyString in this._items) {
-            this.length--;
+            this._length--;
         }
         delete this._items[keyString];
     }
@@ -95,6 +99,7 @@ class Dictionary implements IDictionary {
     }
 }
 
-export const dictionary = () => {
-    return new Dictionary();
+export const dictionary = (): IDictionary => {
+    const d: IDictionary = new Dictionary();
+    return d
 };
