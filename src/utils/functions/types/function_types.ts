@@ -34,3 +34,11 @@ type SortArrayByOptions = {
 }
 
 export type SortArrayBy = (arr: any[], options?: SortArrayByOptions) => any[];
+
+export type RelationTreeOptions = {
+  root: string | number | boolean,
+  id: string | number,
+  parentId: string | number
+}
+
+export type RelationTree<T> = (data: Array<Record<string, any>> ,options: RelationTreeOptions) => T[];

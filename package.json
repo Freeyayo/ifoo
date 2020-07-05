@@ -8,8 +8,8 @@
     "dev": "node_modules/.bin/rollup -w -c ./build/rollup.config.dev.js",
     "build": "node_modules/.bin/rollup -c ./build/rollup.config.prod.js",
     "lintonly": "npx eslint src/**",
-    "test": "npx eslint src/** && jest ./test/index.test.js --notify",
-    "test:kevin": "jest ./test/sort.test.js --notify"
+    "test": "npx eslint src/** && npx jest ./test/index.test.js --notify",
+    "test:kevin": "npx jest ./test/relationtree.test.js --notify"
   },
   "repository": {
     "type": "git",

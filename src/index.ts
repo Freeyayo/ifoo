@@ -4,6 +4,7 @@
  * @LastEditTime: 2020-06-29 23:57:06
  * @FilePath: /spurv/ifoo/src/index.ts
  */
+export * from "./const/constants";
 
 export * from "./utils/math/index";
 export * from "./utils/functions/index";

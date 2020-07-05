@@ -47,6 +47,8 @@
 |		   	// Markdown framework is Docsify. Run `docsify serve docs` will start a local server for document on port 3000 by default.
 |_ _example	// not using it for now
 |
+|_ _mocks   // mock data
+|
 |_ _src		// Source files of this project
 |
 |_ _test 	// Test cases.

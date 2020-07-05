@@ -5,54 +5,8 @@
  * @FilePath: /spurv/ifoo/test/sort.test.js
  */ 
 import { sortarrayby } from '../src/index';
-
-const nested = [
-    {
-        id:5,
-        bio: {
-            name: "a",
-            other: {
-                age: 12
-            }
-        }
-    },
-    {
-        id:3,
-        bio: {
-            name: "c",
-            other: {
-                age: 13
-            }
-        }
-    },
-    {
-        id:1,
-        bio: {
-            name: "e",
-            other: {
-                age: 14
-            }
-        }
-    },
-    {
-        id:2,
-        bio: {
-            name: "b",
-            other: {
-                age: 10
-            }
-        }
-    },
-    {
-        id:4,
-        bio: {
-            name: "d",
-            other: {
-                age: 11
-            }
-        }
-    }
-]
+import { case1 } from '../mocks/nestedObjectInArray';
+const nested = case1;
 
 test("sortarrayby([3,4,5,1,2,3])", () => {
     const array = [3,4,5,1,2,3];
