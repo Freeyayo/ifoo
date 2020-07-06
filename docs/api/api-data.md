@@ -1,13 +1,13 @@
 <!--
  * @Date: 2020-06-30 01:45:54
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-04 02:04:20
+ * @LastEditTime: 2020-07-06 23:36:52
  * @FilePath: /spurv/ifoo/docs/api/api-data.md
 --> 
 ----
 ## B
 #### bstree
-> `bstree: BSTree<number> = (v: T) => BSTreeReturn<T>;` **0.0.1**
+> `bstree: BSTree<number> = (v: T) => BSTreeReturn<T>` **0.0.1**
 >> A binary search tree with its methods
 ```js
 const tree = bstree(10);
@@ -38,7 +38,7 @@ tree.getHead(); //null
 ----
 ## D
 #### dictionary
-> `dictionary: IDictionary = (initValue?) => IDictionary;` **0.0.1**
+> `dictionary: IDictionary = (initValue?) => IDictionary` **0.0.1**
 >> A more standardized dictionary data structure based on C#
 ```js
 const dict = dictionary()
