@@ -19,16 +19,28 @@ import { KeyValue, IDictionary } from "./types/data_interfaces";
 class Dictionary implements IDictionary {
     // The object that actualy stored the key-values
     private _items: KeyValue;
+
+    // Count objects in the dictionary
     private _length: number;
 
+    // So users can access dictionary.length
     get length(): number {
         return this._length;
     }
 
-    constructor() {
+    constructor(initialData?: Record<string, unknown>) {
         this._items = {}
         this._length = 0;
-        // TODO: Accept an object or array for initialization
+
+        // Initialize the dictionary if any data is passed
+        if (initialData) {
+            if (typeof initialData !== 'object') {
+                throw new TypeError('Spurv: initial data must be an object')
+            }
+            for (const key in initialData) {
+                this.add(key, initialData[key])
+            }
+        }
     }
 
     private _getKeyAsString(key: any): string {
@@ -99,7 +111,7 @@ class Dictionary implements IDictionary {
     }
 }
 
-export const dictionary = (): IDictionary => {
-    const d: IDictionary = new Dictionary();
+export const dictionary = (initialData?: Record<string, unknown>): IDictionary => {
+    const d: IDictionary = new Dictionary(initialData);
     return d
 };

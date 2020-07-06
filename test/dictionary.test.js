@@ -63,10 +63,24 @@ test("length", () => {
   expect(d.length).toBe(3);
 });
 
-test("prvent set length", () => {
+test("prevent set length", () => {
   const d = dictionary();
   const t = () => {
     d.length = 10
   };
   expect(t).toThrow(TypeError);
+});
+
+
+test("initialize with array", () => {
+  const d = dictionary(['a', 'b', 1000]);
+  expect(d.length).toBe(3);
+  expect(d.get(0)).toBe('a');
+  expect(d.get(2)).toBe(1000);
+});
+
+test("initialize with object", () => {
+  const d = dictionary({ 'a': 1, 'b': 2, 'c': {} });
+  expect(d.length).toBe(3);
+  expect(d.get('b')).toBe(2);
 });
