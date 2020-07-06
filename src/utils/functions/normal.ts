@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-04 03:13:28
+ * @LastEditTime: 2020-07-06 23:31:35
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -125,6 +125,9 @@ export const flatten: Flatten<number> = (
 };
 
 export const relationtree: RelationTree<Record<string, any>> = (data: Array<Record<string, any>>, options: RelationTreeOptions) => {
+  if(!Array.isArray(data) || !options || !options["id"] || !options["parentId"]){
+    throw new Error("relationtree must have two arguments: data:[] and options:{root,id,parentId}");
+  }
   /*
     '_sliceIndexes' stores indexes of all root nodes each level.
     The reason I did this is that to romove all root nodes after an iterration, 
@@ -133,31 +136,35 @@ export const relationtree: RelationTree<Record<string, any>> = (data: Array<Reco
     If there're 1000 items in origin data and after 990 iterations, I want it to iterate last 10 items.   
   */
   const _sliceIndexes = [];
-  /**
-   * Find out all 'root nodes' in current level.
-   */
-  const roots = data.filter((item, index) => {
+  try{
+    /**
+     * Find out all 'root nodes' in current level.
+     */
+    const roots = data.filter((item, index) => {
       if(item[options.parentId] === options.root){
           _sliceIndexes.push(index);
           return item[options.parentId] === options.root;
       }
-  });
-  /**
-   * If there's no root node found, meaning that we reach the last level.
-   */
-  if(roots.length === 0) return;
-  for(let i = 0, len = _sliceIndexes.length; i < len; i++){
-      data.slice(i, 1);
-  }
-  roots.forEach(item => {
+    });
     /**
-     * 'rtchildren' is a Symbol.
-     * We must use an unique key to be specified as [children] for every root node which stores all its children
-     * Using Symbol can avoid conflict
+     * If there's no root node found, meaning that we reach the last level.
      */
-      item[rtchildren] = relationtree(data, {root: item[options.id], id: options.id, parentId: options.parentId});
-  })
-  return roots;
+    if(roots.length === 0) return;
+    for(let i = 0, len = _sliceIndexes.length; i < len; i++){
+        data.slice(i, 1);
+    }
+    roots.forEach(item => {
+      /**
+       * 'rtchildren' is a Symbol.
+       * We must use an unique key to be specified as [children] for every root node which stores all its children
+       * Using Symbol can avoid conflict
+       */
+        item[rtchildren] = relationtree(data, {root: item[options.id], id: options.id, parentId: options.parentId});
+    })
+    return roots;
+  }catch(e){
+    throw new Error("relationtree must have two arguments: data:[] and options:{root,id,parentId}, they will be used to build the tree");
+  }
 }
 
 export const serialize: SerializeBSTree = (root) => {

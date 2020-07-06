@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2020-07-06 23:09:48
+ * @LastEditors: Conghao Cai🔧
+ * @LastEditTime: 2020-07-07 00:10:08
+ * @FilePath: /spurv/ifoo/README.md
+--> 
 # Spurv(Beta)
 
 ![avatar](https://raw.githubusercontent.com/Freeyayo/ifoo/master/docs/_media/logo.png)
@@ -8,14 +14,14 @@
 ### The Documentation
 [Documentation Link](https://freeyayo.github.io/ifoo/#/)
 
-### What is Spurv?
+### What is Spurv?  🤖️
 - A library which includes many useful functions and data structures that JavaScript doesn't have yet.
 - Most of them comes from my daily work and study.
 - Spurv is written in TypeScript.
 - Use ES Module to bundle them all under the hood.
 - No external dependencies.
 
-### What does Spurv provide?
+### What does Spurv provide? 🔧
 
 - Helper Functions 
     - Math
@@ -29,6 +35,11 @@
 - Performance
     - Faster
     - As Less Heap Memory Used AS Possible
+
+### Playground 🏀
+
+I created a playground for demo, try it out!
+[Click Me](https://stackblitz.com/edit/spurv-playground?embed=1&file=index.js)
 
 ## The develoment guide
 
