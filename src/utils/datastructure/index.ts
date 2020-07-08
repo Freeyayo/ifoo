@@ -8,3 +8,5 @@
 export { bstree } from "./tree";
 
 export { dictionary } from "./dictionary";
+
+export { binaryHeap } from './binary_heap';

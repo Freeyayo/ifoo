@@ -5,7 +5,7 @@
  * @FilePath: /spurv/ifoo/src/utils/datastructure/types/data_interfaces.ts
  */
 
-import { InsertBSTree, GetBSTree } from "./data_types";
+import { BinaryHeapType, InsertBSTree, GetBSTree } from "./data_types";
 
 export interface TreeNode<T> {
   val: T;
@@ -35,4 +35,20 @@ export interface IDictionary {
   keys(): string[];
   remove(key: string): void;
   values(): any[];
+}
+
+export interface BinaryHeapOptions {
+  compareKey?: string;
+  type?: BinaryHeapType
+}
+
+export interface IBinaryHeap {
+  length: number;
+
+  clear(): void;
+  delete(value: string): void;
+  peek(): Record<string, unknown>;
+  pop(): Record<string, unknown>;
+  push(item: Record<string, unknown>): void;
+  toArray(): Record<string, unknown>[],
 }
