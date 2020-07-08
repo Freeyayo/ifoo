@@ -9,11 +9,9 @@ import {
     BSTreeReturn
 } from './data_interfaces';
 
-export enum BinaryHeapType { Min = 'min', Max = 'max' }
-
-export type BinaryHeapOptions = {
-    compareKey?: string,
-    type?: BinaryHeapType
+export enum BinaryHeapType {
+    Min = 'min',
+    Max = 'max'
 }
 
 export type BSTree<T> = (v: T) => BSTreeReturn<T>;

@@ -1,5 +1,7 @@
-import { IBinaryHeap } from "./types/data_interfaces";
-import { BinaryHeapOptions, BinaryHeapType } from './types/data_types';
+import { BinaryHeapOptions, IBinaryHeap } from "./types/data_interfaces";
+import { BinaryHeapType } from './types/data_types';
+
+
 
 /**
  * Javascript implementation of a complete binary heap
@@ -22,13 +24,12 @@ class BinaryHeap {
   // What key of the heap objects should be used for comparison. Default: 'value'
   private _compareKey: string;
 
-  constructor(options?: BinaryHeapOptions) {
+  constructor(options: BinaryHeapOptions = {}) {
     this._heap = [null] // So first index is 1
     this._length = 0;
-    const allOptions = this._getValidOptions(options);
 
-    this._type = allOptions.type;
-    this._compareKey = allOptions.compareKey;
+    this._type = options.type || BinaryHeapType.Min;
+    this._compareKey = options.compareKey || 'value';
   }
 
   get length(): number {
@@ -90,16 +91,6 @@ class BinaryHeap {
   // Return an array of current heap
   toArray(): Record<string, unknown>[] {
     return this._heap.map(item => this._shalowCopy(item));
-  }
-
-  // Validate user options and return them
-  private _getValidOptions(options?: BinaryHeapOptions): BinaryHeapOptions {
-    const allOptions = {
-      compareKey: options && options.compareKey ? options.compareKey : 'value',
-      type: options && options.type ? options.type : BinaryHeapType.Min,
-    };
-
-    return allOptions;
   }
 
   // Return the parent's index for a node
