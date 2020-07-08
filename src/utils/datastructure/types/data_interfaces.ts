@@ -36,3 +36,14 @@ export interface IDictionary {
   remove(key: string): void;
   values(): any[];
 }
+
+export interface IBinaryHeap {
+  length: number;
+
+  clear(): void;
+  delete(value: string): void;
+  peek(): Record<string, unknown>;
+  pop(): Record<string, unknown>;
+  push(item: Record<string, unknown>): void;
+  toArray(): Record<string, unknown>[],
+}

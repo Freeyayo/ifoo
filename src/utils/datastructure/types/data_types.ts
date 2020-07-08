@@ -3,12 +3,18 @@
  * @LastEditors: Conghao Cai🔧
  * @LastEditTime: 2020-06-30 00:05:58
  * @FilePath: /spurv/ifoo/src/utils/datastructure/types/data_types.ts
- */ 
-import { 
+ */
+import {
     TreeNode,
     BSTreeReturn
- } from './data_interfaces';
+} from './data_interfaces';
 
+export enum BinaryHeapType { Min = 'min', Max = 'max' }
+
+export type BinaryHeapOptions = {
+    compareKey?: string,
+    type?: BinaryHeapType
+}
 
 export type BSTree<T> = (v: T) => BSTreeReturn<T>;
 
