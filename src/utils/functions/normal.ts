@@ -27,7 +27,7 @@ import { GenerateBSTreeNode } from "../datastructure/types/data_types";
  * @return: a composed function
  */
 
-export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
+export const compose: PureFunctionCompose<(a?: any) => any> = (...fns: Array<(x:any) => any>) => (x) =>
   fns.reduce((acc, f) => {
     if (typeof f !== "function" || f.length !== 1) {
       throw new Error(`compose accepts pure function(s) which needs only 1 argument`)
@@ -45,7 +45,7 @@ export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
  * @param {function | any}
  * @return: a curried function
  */
-export const curry: PureFunctionCurry<() => any>= (...args) => {
+export const curry: PureFunctionCurry<() => any>= (...args: Array< () => any | any>) => {
   const targetFunc: (...reArgs:any[]) => any = args[0];
   const sumOfArgs: number = targetFunc.length;
   if(args.length - 1 < sumOfArgs){

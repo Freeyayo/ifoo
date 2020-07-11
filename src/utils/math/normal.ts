@@ -36,7 +36,7 @@ export const factorial: Factorial<number> = (n : number) => {
     }
 }
 
-export const intersect: Intersect<number> = (...sets) => {
+export const intersect: Intersect<number> = (...sets: number[][]): number[] => {
     if(sets.length === 0)return [null]
     const all = sets.reduce((ci, set) => {
         if(Array.isArray(ci) && Array.isArray(set)){
@@ -48,7 +48,7 @@ export const intersect: Intersect<number> = (...sets) => {
     return Array.from(new Set(flatten(all)));
 }
 
-export const union: Union<number> = (...sets) => {
+export const union: Union<number> = (...sets: number[][]):number[] => {
     if(sets.length === 0)return [null]
     const all: Array<Array<number| null>> = sets.map(set =>{
         if(Array.isArray(set)){
