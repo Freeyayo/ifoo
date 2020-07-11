@@ -6,7 +6,6 @@
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
 import { rtchildren } from "../../const/constants";
-import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from "../../global_data";
 import {
   DeserializeBSTree,
   Flatten,
@@ -30,16 +29,12 @@ import { GenerateBSTreeNode } from "../datastructure/types/data_types";
 export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
   fns.reduce((acc, f) => {
     if (typeof f !== "function" || f.length !== 1) {
-      console.log(
-        CONSOLE_HEADER_TEXT,
-        CONSOLE_HEADER_STYLE,
-        `compose accepts pure function(s) which needs only 1 argument`
-      );
+      throw new Error(`compose accepts pure function(s) which needs only 1 argument`)
     }
     try {
       return f(acc);
     } catch (e) {
-      console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, e);
+      throw new Error(e)
     }
   }, x);
 
@@ -84,12 +79,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
     return root;
   }catch(e){
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `make sure you provided a valid serialized string to function deserialize`
-    )
-    console.log(e)
+    throw new Error(e)
   }
 }
 
@@ -101,13 +91,7 @@ export const flatten: Flatten<number> = (
 
   // Return empty if first parameter is not an array
   if (!Array.isArray(arr)) {
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `flatten accepts an array`,
-      `and safe answer '[]' returned`
-    );
-    return [];
+    throw new Error(`flatten accepts an array and safe answer '[]' returned`)
   }
 
   if (levels === 0) {
@@ -196,12 +180,7 @@ export const serialize: SerializeBSTree = (root) => {
     return "[" + ret.toString() + "]";
 
   }catch(e){
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `make sure you pass a binary tree to function serialize`
-    )
-    console.log(e)
+    throw new Error(e)
   }
 }
 

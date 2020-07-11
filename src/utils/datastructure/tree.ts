@@ -4,7 +4,6 @@
  * @LastEditTime: 2020-07-03 00:01:13
  * @FilePath: /spurv/ifoo/src/utils/datastructure/tree.ts
  */
-import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from "../../global_data";
 import { TreeNode } from './types/data_interfaces';
 import {
     BSTree,
@@ -40,12 +39,7 @@ export const bstree: BSTree<number> = (rootValue) => {
                 insertNode(node.right, newNode)
             }
         }else{
-            console.log(
-                CONSOLE_HEADER_TEXT, 
-                CONSOLE_HEADER_STYLE,
-                `you passed a duplicate value to binary search tree, Spurv ignored it`
-                )
-            return;
+            throw new Error(`you passed a duplicate value to binary search tree, Spurv ignored it`)
         }
     }
 
