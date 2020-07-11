@@ -8,6 +8,7 @@
  */ 
 export {
     compose,
+    curry,
     deserialize,
     flatten,
     relationtree,

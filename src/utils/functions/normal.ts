@@ -11,6 +11,7 @@ import {
   Flatten,
   FlattenOptions,
   PureFunctionCompose,
+  PureFunctionCurry,
   RelationTree,
   RelationTreeOptions,
   SerializeBSTree,
@@ -37,6 +38,22 @@ export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
       throw new Error(e)
     }
   }, x);
+
+
+/**
+ * @description: a curry function
+ * @param {any}
+ * @return: a curried function
+ */
+export const curry: PureFunctionCurry<() => any>= (...args) => {
+  const targetFunc: () => any = args[0];
+  const sumOfArgs: number = targetFunc.length;
+  if(args.length - 1 < sumOfArgs){
+      return curry.bind(null, ...args)
+  }else{
+      return targetFunc.apply(null, args.slice(1))
+  }
+}
 
 export const deserialize: DeserializeBSTree = (data) => {
   if(data === null)return null;
