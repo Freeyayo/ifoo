@@ -9,4 +9,4 @@ export { bstree } from "./tree";
 
 export { dictionary } from "./dictionary";
 
-export { binaryHeap } from './binary_heap';
+export { binaryHeap as binaryheap } from './binary_heap';

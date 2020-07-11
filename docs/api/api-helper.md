@@ -18,6 +18,30 @@ const c = compose(uppercase, claim);
 
 c(string) //SPURV !
 ```
+#### curry
+> `curry:  PureFunctionCurry<T> = (...args: Array<() => any | any>) => T` **0.0.1**
+>> Curry a function means you can break down a function that takes multiple arguments into a series of functions that each take only one argument
+```js
+const foo = (a,b,c,d) => [a,b,c,d];
+
+const curriedFoo = curry(foo);
+  
+const temp1 = curriedFoo(1,2);
+temp1(3,4)  // [1,2,3,4]
+
+const temp2 = curriedFoo(1)(2);
+temp2(3,4)  // [1,2,3,4]
+
+------------------------------
+
+const curriedFoo = curry(foo,1,2);
+
+const temp1 = curriedFoo(3,4);
+temp1  // [1,2,3,4]
+
+const temp2 = curriedFoo(3)(4);
+temp2  // [1,2,3,4]
+```
 ----
 ## D
 #### deserialize
