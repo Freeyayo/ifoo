@@ -48,8 +48,8 @@ b.length    // 3
 b.pop()
 b.length    // 2
 // get the value of a popping root
+b.pop().value  // 2
 b.pop().value  // 3
-b.pop().value  // 1
 b.pop().value  // undefined
 
 b.push({ value: 5 })
