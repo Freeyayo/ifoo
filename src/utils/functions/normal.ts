@@ -42,7 +42,7 @@ export const deserialize: DeserializeBSTree = (data) => {
   if(data === null)return null;
 
   const bstreeNode: GenerateBSTreeNode<number> = (val) => {
-    // clean Object gets rid of methods on prototype chain
+    // cleanObject gets rid of methods on prototype chain
     const cleanObject: Record<any, unknown> = Object.create(null);
     return Object.assign(cleanObject,{val, left: null, right: null});
   };
@@ -58,6 +58,7 @@ export const deserialize: DeserializeBSTree = (data) => {
     const cn: TreeNode<number> | string = data_array.shift();
 
     if(cn === "null")return null;
+    if(isNaN(Number(cn))) throw new Error('check your input');
 
     const root: TreeNode<number> = bstreeNode(Number(cn));
     queue.push(root);
