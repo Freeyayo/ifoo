@@ -14,6 +14,8 @@ export type DeserializeBSTree = (data: string) => TreeNode<number>;
 
 export type PureFunctionCompose<T> = (...f: T[]) => (x: any) => T;
 
+export type PureFunctionCurry<T> = (...args: Array< () => any | any>) => T;
+
 /* Optional parameters for the Flatten function */
 export type FlattenOptions = {
   /*

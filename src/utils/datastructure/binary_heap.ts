@@ -48,7 +48,7 @@ class BinaryHeap {
 
     if (index > 0) {
       this._swapNodes(index, this._length);
-      this._heap[this._length] = undefined;
+      this._heap.splice(-1);
       this._length--;
       this._sinkDown(index);
     }
@@ -65,7 +65,7 @@ class BinaryHeap {
     this._heap[1] = this._heap[this._length];
 
     // Delete last node
-    this._heap[this._length] = undefined;
+    this._heap.splice(-1)
     this._length--;
 
     this._sinkDown(1);
@@ -76,7 +76,7 @@ class BinaryHeap {
   // Add item to the heap
   push(item: Record<string, unknown>): void {
     this._length++;
-    this._heap[this._length] = this._shalowCopy(item);
+    this._heap[this._length] = this._shallowCopy(item);
 
     if (this._length > 1) {
       this._bubbleUp(this._length);
@@ -85,12 +85,12 @@ class BinaryHeap {
 
   // Return the root without poping
   peek(): Record<string, unknown> {
-    return this._shalowCopy(this._heap[1]);
+    return this._shallowCopy(this._heap[1]);
   }
 
   // Return an array of current heap
   toArray(): Record<string, unknown>[] {
-    return this._heap.map(item => this._shalowCopy(item));
+    return this._heap.map(item => this._shallowCopy(item));
   }
 
   // Return the parent's index for a node
@@ -174,7 +174,7 @@ class BinaryHeap {
     }
   }
 
-  private _shalowCopy(object: Record<string, unknown>): Record<string, unknown> {
+  private _shallowCopy(object: Record<string, unknown>): Record<string, unknown> {
     return Object.assign({}, object);
   }
 

@@ -3,12 +3,13 @@
  * @LastEditors: Conghao Cai🔧
  * @LastEditTime: 2020-07-03 21:56:58
  * @FilePath: /spurv/ifoo/.eslintrc.js
- */ 
+ */
 module.exports = {
     "env": {
         "browser": true,
         "es2020": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",

@@ -6,12 +6,12 @@
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
 import { rtchildren } from "../../const/constants";
-import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from "../../global_data";
 import {
   DeserializeBSTree,
   Flatten,
   FlattenOptions,
   PureFunctionCompose,
+  PureFunctionCurry,
   RelationTree,
   RelationTreeOptions,
   SerializeBSTree,
@@ -27,27 +27,39 @@ import { GenerateBSTreeNode } from "../datastructure/types/data_types";
  * @return: a composed function
  */
 
-export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
+export const compose: PureFunctionCompose<(a?: any) => any> = (...fns: Array<(x:any) => any>) => (x) =>
   fns.reduce((acc, f) => {
     if (typeof f !== "function" || f.length !== 1) {
-      console.log(
-        CONSOLE_HEADER_TEXT,
-        CONSOLE_HEADER_STYLE,
-        `compose accepts pure function(s) which needs only 1 argument`
-      );
+      throw new Error(`compose accepts pure function(s) which needs only 1 argument`)
     }
     try {
       return f(acc);
     } catch (e) {
-      console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, e);
+      throw new Error(e)
     }
   }, x);
+
+
+/**
+ * @description: a curry function
+ * @param {function | any}
+ * @return: a curried function
+ */
+export const curry: PureFunctionCurry<() => any>= (...args: Array< () => any | any>) => {
+  const targetFunc: (...reArgs:any[]) => any = args[0];
+  const sumOfArgs: number = targetFunc.length;
+  if(args.length - 1 < sumOfArgs){
+      return curry.bind(null, ...args)
+  }else{
+      return targetFunc(...args.slice(1))
+  }
+}
 
 export const deserialize: DeserializeBSTree = (data) => {
   if(data === null)return null;
 
   const bstreeNode: GenerateBSTreeNode<number> = (val) => {
-    // clean Object gets rid of methods on prototype chain
+    // cleanObject gets rid of methods on prototype chain
     const cleanObject: Record<any, unknown> = Object.create(null);
     return Object.assign(cleanObject,{val, left: null, right: null});
   };
@@ -63,6 +75,7 @@ export const deserialize: DeserializeBSTree = (data) => {
     const cn: TreeNode<number> | string = data_array.shift();
 
     if(cn === "null")return null;
+    if(isNaN(Number(cn))) throw new Error('check your input');
 
     const root: TreeNode<number> = bstreeNode(Number(cn));
     queue.push(root);
@@ -84,12 +97,7 @@ export const deserialize: DeserializeBSTree = (data) => {
 
     return root;
   }catch(e){
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `make sure you provided a valid serialized string to function deserialize`
-    )
-    console.log(e)
+    throw new Error(e)
   }
 }
 
@@ -101,13 +109,7 @@ export const flatten: Flatten<number> = (
 
   // Return empty if first parameter is not an array
   if (!Array.isArray(arr)) {
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `flatten accepts an array`,
-      `and safe answer '[]' returned`
-    );
-    return [];
+    throw new Error(`flatten accepts an array and safe answer '[]' returned`)
   }
 
   if (levels === 0) {
@@ -196,12 +198,7 @@ export const serialize: SerializeBSTree = (root) => {
     return "[" + ret.toString() + "]";
 
   }catch(e){
-    console.log(
-      CONSOLE_HEADER_TEXT,
-      CONSOLE_HEADER_STYLE,
-      `make sure you pass a binary tree to function serialize`
-    )
-    console.log(e)
+    throw new Error(e)
   }
 }
 

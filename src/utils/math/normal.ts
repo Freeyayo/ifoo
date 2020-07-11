@@ -11,7 +11,6 @@ import {
     Union
 } from './types/math_types';
 import { flatten } from '../functions/index';
-import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
 /**
  * @description: compute the factorial of input, if there's red line under the BigInt comes from TypeScript, open the comment in BigInt.d.ts
  * @param {number} 
@@ -19,8 +18,7 @@ import { CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE } from '../../global_data';
  */
 export const factorial: Factorial<number> = (n : number) => {
     if(isNaN(n) || n < 0 || n > 170){
-        console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `number 'n'(0 <= n <= 170) expected`, `and safe answer '1' returned`);
-        return 1;
+        throw new Error(`number 'n'(0 <= n <= 170) expected and safe answer '1' returned`)
     }
     if(n === 0)return 1;
     if(n <= 99){
@@ -38,27 +36,25 @@ export const factorial: Factorial<number> = (n : number) => {
     }
 }
 
-export const intersect: Intersect<number> = (...sets) => {
+export const intersect: Intersect<number> = (...sets: number[][]): number[] => {
     if(sets.length === 0)return [null]
     const all = sets.reduce((ci, set) => {
         if(Array.isArray(ci) && Array.isArray(set)){
             return ci.filter(item => set.includes(item));
         }else{
-            console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
-            return [];
+            throw new Error(`Array<number> expected and safe answer '[]' returned`)
         }
     })
     return Array.from(new Set(flatten(all)));
 }
 
-export const union: Union<number> = (...sets) => {
+export const union: Union<number> = (...sets: number[][]):number[] => {
     if(sets.length === 0)return [null]
     const all: Array<Array<number| null>> = sets.map(set =>{
         if(Array.isArray(set)){
             return set;
         }else{
-            console.log(CONSOLE_HEADER_TEXT, CONSOLE_HEADER_STYLE, `Array<number> expected`, `and safe answer '[]' returned`);
-            return [];
+            throw new Error(`Array<number> expected and safe answer '[]' returned`)
         }
     });
     return Array.from(new Set(flatten(all)));
