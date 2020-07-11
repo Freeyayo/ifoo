@@ -14,6 +14,20 @@
 ### The Documentation
 [Documentation Link](https://freeyayo.github.io/ifoo/#/)
 
+If you want to edit the document, follow these steps:
+1. Install `docsify-cli`
+```bash
+npm i docsify-cli -g
+```
+
+2. Go to `ifoo` and run `docsify serve docs`.
+
+3. The development mode of document will be hosted on `port 3000`.
+
+4. All documents files located under the `docs` folder.
+
+[more](https://docsify.js.org/#/quickstart)
+
 ### What is Spurv?  🤖️
 - A library which includes many useful functions and data structures that JavaScript doesn't have yet.
 - Most of them comes from my daily work and study.
