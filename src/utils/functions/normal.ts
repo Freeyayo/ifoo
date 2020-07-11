@@ -42,7 +42,7 @@ export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
 
 /**
  * @description: a curry function
- * @param {any}
+ * @param {function | any}
  * @return: a curried function
  */
 export const curry: PureFunctionCurry<() => any>= (...args) => {
