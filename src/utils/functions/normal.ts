@@ -46,12 +46,12 @@ export const compose: PureFunctionCompose<(a?: any) => any> = (...fns) => (x) =>
  * @return: a curried function
  */
 export const curry: PureFunctionCurry<() => any>= (...args) => {
-  const targetFunc: () => any = args[0];
+  const targetFunc: (...reArgs:any[]) => any = args[0];
   const sumOfArgs: number = targetFunc.length;
   if(args.length - 1 < sumOfArgs){
       return curry.bind(null, ...args)
   }else{
-      return targetFunc.apply(null, args.slice(1))
+      return targetFunc(...args.slice(1))
   }
 }
 
