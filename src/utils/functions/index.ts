@@ -11,7 +11,8 @@ export {
     curry,
     deserialize,
     flatten,
-    relationtree,
+    privateMode,
+    relationTree,
     serialize,
-    sortarrayby
+    sortArrayBy
 } from './normal';
