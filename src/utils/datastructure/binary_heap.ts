@@ -179,9 +179,7 @@ class BinaryHeap {
   }
 
   private _swapNodes(a: number, b: number): void {
-    const aux = this._heap[a];
-    this._heap[a] = this._heap[b];
-    this._heap[b] = aux;
+    [this._heap[a], this._heap[b]] = [this._heap[b], this._heap[a]]
   }
 
 }
