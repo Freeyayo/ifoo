@@ -6,3 +6,5 @@
  */ 
 export type CONSOLE_HEADER_STYLE = string;
 export type CONSOLE_HEADER_TEXT = string;
+
+export type PrivateProtected = ProxyConstructor;
