@@ -30,6 +30,8 @@ export type Flatten<T> = (
   options?: FlattenOptions
 ) => T[];
 
+export type PrivateMode = (target: Record<string, any>) => ProxyConstructor;
+
 type SortArrayByOptions = {
   tar: Array<string>,
   rev: boolean

@@ -12,6 +12,7 @@ import {
   FlattenOptions,
   PureFunctionCompose,
   PureFunctionCurry,
+  PrivateMode,
   RelationTree,
   RelationTreeOptions,
   SerializeBSTree,
@@ -126,9 +127,37 @@ export const flatten: Flatten<number> = (
   );
 };
 
-export const relationtree: RelationTree<Record<string, any>> = (data: Array<Record<string, any>>, options: RelationTreeOptions) => {
+/**
+ * 
+ * @param target a constructor, class or object
+ * @returns a proxy of target
+ * @description error will be thrown as visiting the private properties and methods which start with '_'
+ */
+export const privateMode: PrivateMode = (target: Record<string, any>): ProxyConstructor => {
+  const invariant = (key: string, action: string) => {
+      if(key[0] === '_'){
+          throw new Error(`Invalid attempt to ${action} private "${key}" property`);
+      }
+  }
+  const _privatemode = (target: Record<string, any>): any => {
+    return new Proxy(target, {
+        get (target: Record<string, any>, key:string) {
+            invariant(key, 'get');
+            return target[key];
+        },
+        set (target: Record<string, any>, key:string, value:any) {
+            invariant(key, 'set');
+            Reflect.set(target, key, value);
+            return true;
+        }
+    })
+  }
+  return _privatemode(target)
+}
+
+export const relationTree: RelationTree<Record<string, any>> = (data: Array<Record<string, any>>, options: RelationTreeOptions) => {
   if(!Array.isArray(data) || !options || !options["id"] || !options["parentId"]){
-    throw new Error("relationtree must have two arguments: data:[] and options:{root,id,parentId}");
+    throw new Error("relationTree must have two arguments: data:[] and options:{root,id,parentId}");
   }
   /*
     '_sliceIndexes' stores indexes of all root nodes each level.
@@ -161,11 +190,11 @@ export const relationtree: RelationTree<Record<string, any>> = (data: Array<Reco
        * We must use an unique key to be specified as [children] for every root node which stores all its children
        * Using Symbol can avoid conflict
        */
-        item[rtchildren] = relationtree(data, {root: item[options.id], id: options.id, parentId: options.parentId});
+        item[rtchildren] = relationTree(data, {root: item[options.id], id: options.id, parentId: options.parentId});
     })
     return roots;
   }catch(e){
-    throw new Error("relationtree must have two arguments: data:[] and options:{root,id,parentId}, they will be used to build the tree");
+    throw new Error("relationTree must have two arguments: data:[] and options:{root,id,parentId}, they will be used to build the tree");
   }
 }
 
@@ -202,7 +231,7 @@ export const serialize: SerializeBSTree = (root) => {
   }
 }
 
-export const sortarrayby: SortArrayBy = (arr, options = { tar: [], rev: false}) => {
+export const sortArrayBy: SortArrayBy = (arr, options = { tar: [], rev: false}) => {
   if(!options.tar){
     options.tar = [];
   }

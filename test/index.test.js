@@ -4,15 +4,15 @@
  * @LastEditTime: 2020-06-30 00:31:02
  * @FilePath: /spurv/ifoo/test/index.test.js
  */ 
-import { bstree } from '../src/index';
+import { bsTree } from '../src/index';
 
-test("bstree(10) will be initialized by 10", () => {
-    const tree = bstree(10);
+test("bsTree(10) will be initialized by 10", () => {
+    const tree = bsTree(10);
     expect(tree.getHead().val).toBe(10)
 });
 
 test("insertiong rules", () => {
-    const tree = bstree(10);
+    const tree = bsTree(10);
     tree.insert(5);
     tree.insert(15);
     expect(tree.getHead().val).toBe(10);
@@ -21,7 +21,7 @@ test("insertiong rules", () => {
 });
 
 test("insertiong rules2", () => {
-    const tree = bstree(10);
+    const tree = bsTree(10);
     tree.insert(5);
     tree.insert(15);
     tree.insert(16);

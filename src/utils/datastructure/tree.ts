@@ -17,14 +17,14 @@ import {
  * @return: object
  */
 // function: binary search tree
-export const bstree: BSTree<number> = (rootValue) => {
-    //generate a bstree node by passing a value
+export const bsTree: BSTree<number> = (rootValue) => {
+    //generate a bsTree node by passing a value
     const bstreeNode: GenerateBSTreeNode<number> = (val) => {
         // clean Object gets rid of methods on prototype chain
         const cleanObject: Record<any, unknown>= Object.create(null);
         return Object.assign(cleanObject,{val, left: null, right: null});
     };
-    // insert a new node to the bstree
+    // insert a new node to the bsTree
     const insertNode: InsertNode<number> = (node, newNode) => {
         if(newNode.val < node.val){
             if(node.left === null){

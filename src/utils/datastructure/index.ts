@@ -5,8 +5,8 @@
  * @FilePath: /spurv/ifoo/src/utils/datastructure/index.ts
  */
 
-export { bstree } from "./tree";
+export { bsTree } from "./tree";
 
 export { dictionary } from "./dictionary";
 
-export { binaryHeap as binaryheap } from './binary_heap';
+export { binaryHeap } from './binary_heap';

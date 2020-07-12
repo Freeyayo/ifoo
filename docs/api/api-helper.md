@@ -76,11 +76,11 @@ flatten(nested2, { levels: 3 }) //[1, 1, 2, 3, 3, 4]
 ```
 ----
 ## R
-#### relationtree
-> `relationtree: RelationTree<T> = (data: Array<Record<string, any>> ,options: RelationTreeOptions) => T[]` **0.0.1**
+#### relationTree
+> `relationTree: RelationTree<T> = (data: Array<Record<string, any>> ,options: RelationTreeOptions) => T[]` **0.0.1**
 >> Construct a tree by connecting their relation in using given relalionship information. The constant `rtchildren` is necessary for all iteration to get each level's children. You can choose any level as its root.
 ```js
-import { relationtree, rtchildren } from 'spurv';
+import { relationTree, rtchildren } from 'spurv';
 
 const data = [
     {id: 1000,pid: null},
@@ -105,17 +105,17 @@ const data = [
 //    [{id:1003}]  [{id:1004},{id:1006},{id:1007},{id:1008},{id:1009}]
 
 
-// relationtree will know the relationship between given nodes by inspection the second arguments.
+// relationTree will know the relationship between given nodes by inspection the second arguments.
 // Choose `null` as tree's root
-relationtree(data, {root: null, id: "id", parentId: "pid"})
+relationTree(data, {root: null, id: "id", parentId: "pid"})
 // [{"id":1000,"pid":null},{"id":1005,"pid":null}]
 
 // If you want to get children node, use `rtchildren`
-relationtree(data, {root: null, id: "id", parentId: "pid"})[0][rtchildren][1][rtchildren]
+relationTree(data, {root: null, id: "id", parentId: "pid"})[0][rtchildren][1][rtchildren]
 // [{"id":1004,"pid":1002},{"id":1006,"pid":1002},{"id":1007,"pid":1002},{"id":1008,"pid":1002},{"id":1009,"pid":1002}]
 ------------------------------
 // Choose `1002` as tree's root
-relationtree(case1, {root: 1002, id: "id", parentId: "pid"})
+relationTree(case1, {root: 1002, id: "id", parentId: "pid"})
 // [{"id":1004,"pid":1002},{"id":1006,"pid":1002},{"id":1007,"pid":1002},{"id":1008,"pid":1002},{"id":1009,"pid":1002}]
 ```
 ----
@@ -141,14 +141,14 @@ const root = tree.getHead();
 
 serialize(root) // "[10,2,12,1,3,11,13]"
 ```
-#### sortarrayby
-> `sortarrayby: SortArrayBy = (arr: any[], options?: SortArrayByOptions) => any[]` **0.0.1**
+#### sortArrayBy
+> `sortArrayBy: SortArrayBy = (arr: any[], options?: SortArrayByOptions) => any[]` **0.0.1**
 >> Sorted an array in inertial thinking way(from small to big/from a to z). Spurv provides an option which can let you customize your result.
 ```js
 const normal = [3,4,1,2,5];
-sortarrayby(normal) // [1,2,3,4,5]
+sortArrayBy(normal) // [1,2,3,4,5]
 // rev ==> reverse or not
-sortarrayby(normal, {rev: true}) // [5,4,3,2,1]
+sortArrayBy(normal, {rev: true}) // [5,4,3,2,1]
 
 // tar ==> the target key you want to sort by
 const nested = [
@@ -158,5 +158,5 @@ const nested = [
     {id:2,bio: {name: "b",other: {age: 10}}},
     {id:4,bio: {name: "d",other: {age: 11}}}
 ]
-sortarrayby(nested, {tar: ["bio","name"]}) // [{...{name:"a",...}},{...{name:"b",...}},{...{name:"c",...}},{...{name:"d",...}},{...{name:"e",...}}
+sortArrayBy(nested, {tar: ["bio","name"]}) // [{...{name:"a",...}},{...{name:"b",...}},{...{name:"c",...}},{...{name:"d",...}},{...{name:"e",...}}
 ```

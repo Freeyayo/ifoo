@@ -4,10 +4,10 @@
  * @LastEditTime: 2020-06-30 23:56:59
  * @FilePath: /spurv/ifoo/test/data_structure.test.js
  */ 
-import { bstree, deserialize, serialize } from '../src/index';
+import { bsTree, deserialize, serialize } from '../src/index';
 
 test("serialize a binary tree)", () => {
-    const tree = bstree(10);
+    const tree = bsTree(10);
     tree.insert(2);
     tree.insert(1);
     tree.insert(3);
@@ -20,7 +20,7 @@ test("serialize a binary tree)", () => {
 });
 
 test("serialize a binary tree with `null` in child node)", () => {
-    const tree = bstree(10);
+    const tree = bsTree(10);
     tree.insert(2);
     tree.insert(12);
     tree.insert(11);
@@ -31,7 +31,7 @@ test("serialize a binary tree with `null` in child node)", () => {
 });
 
 test("deserialize a serialized tree's data )", () => {
-    const tree = bstree(10);
+    const tree = bsTree(10);
     tree.insert(2);
     tree.insert(1);
     tree.insert(3);
