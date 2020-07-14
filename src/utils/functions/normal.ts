@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-06 23:31:35
+ * @LastEditTime: 2020-07-14 22:51:46
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -135,7 +135,7 @@ export const flatten: Flatten<number> = (
  */
 export const privateMode: PrivateMode = (target: Record<string, any>): ProxyConstructor => {
   const invariant = (key: string, action: string) => {
-      if(key[0] === '_'){
+      if(key[0] === '_' && key[1] !== '_'){
           throw new Error(`Invalid attempt to ${action} private "${key}" property`);
       }
   }

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-28 23:02:23
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-07 00:06:33
+ * @LastEditTime: 2020-07-14 23:11:18
  * @FilePath: /spurv/ifoo/docs/api/api-helper.md
 --> 
 ----
@@ -73,6 +73,30 @@ flatten(nested2, { levels: 1 }) //[1, 1, 2, [3, 3], [[4]]]
 flatten(nested2, { levels: 2 }) //[1, 1, 2, 3, 3, [4]]
 
 flatten(nested2, { levels: 3 }) //[1, 1, 2, 3, 3, 4]
+```
+----
+## P
+#### privateMode
+> `privateMode: PrivateMode = (target: Record<string, any>) => ProxyConstructor` **0.0.1**
+>> We usually prefix properties with _ to represent they are private. In fact, JavaScript still doesn't support private property in the object or class. `privateMode` is born to fix this. 
+```js
+const Hellen = {
+    name: "Hellen",
+    _age: 30,
+    sayName(){
+        return this.name
+    },
+    _sayAge(){
+        return this._age;
+    }
+}
+// wrap your object into privateMode method
+const HellenSecret = privateMode(Hellen);
+
+HellenSecret._age   // Error
+HellenSecret._sayAge()  // Error
+HellenSecret.name   // "Hellen"
+HellenSecret.sayName()  // "Hellen"
 ```
 ----
 ## R

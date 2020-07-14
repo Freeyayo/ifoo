@@ -1,3 +1,9 @@
+/*
+ * @Date: 2020-07-13 00:10:54
+ * @LastEditors: Conghao Cai🔧
+ * @LastEditTime: 2020-07-14 22:53:10
+ * @FilePath: /spurv/ifoo/test/private_mode.test.js
+ */ 
 import { privateMode } from '../src/index';
 
 const Hellen = {
@@ -38,4 +44,5 @@ test("class calls privateMode", () => {
     expect(() => TomSecret._sayPassword()).toThrow();
     expect(TomSecret.name).toBe("Tom");
     expect(TomSecret.sayName()).toBe("Tom");
+    expect(typeof TomSecret.__proto__).toBe("object");
 });
