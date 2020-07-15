@@ -1,18 +1,25 @@
 import { binaryHeap } from '../src/index';
 import { BinaryHeapType } from '../src/utils/datastructure/types/data_types'
 
+test("initialize min heap type", () => {
+  const b = binaryHeap([{ k: 'a', value: 2 }, { k: 'b', value: 1 }]);
+  expect(b._type).toBe(BinaryHeapType.Min)
+  expect(b.length).toBe(2);
+  expect(b.pop().value).toBe(1);
+});
+
 test("implicit min heap type", () => {
   const b = binaryHeap();
   expect(b._type).toBe(BinaryHeapType.Min)
 });
 
 test("explicit min heap type", () => {
-  const b = binaryHeap({ type: 'min' });
+  const b = binaryHeap([], { type: 'min' });
   expect(b._type).toBe(BinaryHeapType.Min)
 });
 
 test("explicit max heap type", () => {
-  const b = binaryHeap({ type: 'max' });
+  const b = binaryHeap([], { type: 'max' });
   expect(b._type).toBe(BinaryHeapType.Max)
 });
 
@@ -22,7 +29,7 @@ test("implicit compare key", () => {
 });
 
 test("explicit compare key", () => {
-  const b = binaryHeap({ compareKey: 'boom' });
+  const b = binaryHeap([], { compareKey: 'boom' });
   expect(b._compareKey).toBe('boom')
 });
 
@@ -100,7 +107,7 @@ test("min heap mixed operations", () => {
 })
 
 test("max heap pop order is correct", () => {
-  const b = binaryHeap({ type: 'max' });
+  const b = binaryHeap([], { type: 'max' });
   b.push({ value: 1 })
   b.push({ value: 3 })
   b.push({ value: 5 })
@@ -117,7 +124,7 @@ test("max heap pop order is correct", () => {
 });
 
 test("max heap mixed operations", () => {
-  const b = binaryHeap({ type: 'max' });
+  const b = binaryHeap([], { type: 'max' });
   b.push({ value: 5 })
   b.push({ value: 2 })
 
@@ -138,7 +145,7 @@ test("max heap mixed operations", () => {
 })
 
 test("custom compareKey mixed operations", () => {
-  const b = binaryHeap({ type: 'max', compareKey: 'boom' });
+  const b = binaryHeap([], { type: 'max', compareKey: 'boom' });
   b.push({ boom: 5 })
   b.push({ boom: 2 })
 
