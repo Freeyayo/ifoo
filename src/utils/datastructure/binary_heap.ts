@@ -1,8 +1,6 @@
 import { BinaryHeapOptions, IBinaryHeap } from "./types/data_interfaces";
 import { BinaryHeapType } from './types/data_types';
 
-
-
 /**
  * Javascript implementation of a complete binary heap
  *
@@ -24,12 +22,16 @@ class BinaryHeap {
   // What key of the heap objects should be used for comparison. Default: 'value'
   private _compareKey: string;
 
-  constructor(options: BinaryHeapOptions = {}) {
+  constructor(initialData: Record<string, unknown>[] = [], options: BinaryHeapOptions = {}) {
     this._heap = [null] // So first index is 1
     this._length = 0;
 
+    // Set fields from options
     this._type = options.type || BinaryHeapType.Min;
     this._compareKey = options.compareKey || 'value';
+
+    // Initialize the heap
+    this._initialize(initialData || []);
   }
 
   get length(): number {
@@ -91,6 +93,17 @@ class BinaryHeap {
   // Return an array of current heap
   toArray(): Record<string, unknown>[] {
     return this._heap.map(item => this._shallowCopy(item));
+  }
+
+  // Initialize the heap
+  _initialize(initialData: Record<string, unknown>[]) {
+    initialData.forEach(o => {
+      if (typeof o !== 'object' || Array.isArray(o)) {
+        throw new TypeError("Spurv: initial data must be an array of objects");
+      } else {
+        this.push(o);
+      }
+    })
   }
 
   // Return the parent's index for a node
@@ -184,7 +197,7 @@ class BinaryHeap {
 
 }
 
-export const binaryHeap = (options?: BinaryHeapOptions): IBinaryHeap => {
-  const d: IBinaryHeap = new BinaryHeap(options);
+export const binaryHeap = (initialData: Record<string, unknown>[] = [], options?: BinaryHeapOptions): IBinaryHeap => {
+  const d: IBinaryHeap = new BinaryHeap(initialData, options);
   return d;
 };
