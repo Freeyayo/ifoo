@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-14 22:51:46
+ * @LastEditTime: 2020-07-19 02:04:03
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -143,7 +143,6 @@ export const privateMode: PrivateMode = (target: Record<string, any>): ProxyCons
     return new Proxy(target, {
         get (target: Record<string, any>, key:string) {
             invariant(key, 'get');
-            // return target[key];
             return Reflect.get(target, key);
         },
         set (target: Record<string, any>, key:string, value:any) {
