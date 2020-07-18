@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-30 01:45:54
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-06 23:36:52
+ * @LastEditTime: 2020-07-19 02:20:09
  * @FilePath: /spurv/ifoo/docs/api/api-data.md
 --> 
 ----
@@ -83,6 +83,18 @@ b.pop()
 b.push({ boom: 1 })
 
 b.peek().boom   // 3
+
+------------------------------
+// you can also initialize a binaryheap with initial item(s)
+// pass an array of value(s) as its first argument
+const b = binaryHeap([{ boom: 5 }, { boom: 2 }], { type: 'max', compareKey: 'boom' });
+
+------------------------------
+// some optional arguments form you can use 
+b = binaryHeap()                // no initial data, no explicit options
+b = binaryHeap([...])           // with initial data, no explicit options
+b = binaryHeap(null, {...})   // no initial data, explicit options. undefined and empty array are also accepted as first parameter
+b = binaryHeap([...], {...})    // some initial data and explicit options
 ```
 
 ----
@@ -121,4 +133,37 @@ dict.containsValue("v1") // false
 // clear
 dict.clear();
 dict.length // 0
+```
+
+----
+## L
+#### linkedList
+> `linkedList = () => ILinkedList | ProxyConstructor` **0.0.1**
+>> The JavaScript implementation of the linked list datatructure and its methods 
+```js
+const linkedlist = linkedList();
+// append
+linkedlist.append("grandpa")
+linkedlist.append("papa")
+linkedlist.append("Billy")
+// getHead
+linkedlist.getHead().element    // "grandpa"
+linkedlist.getHead().next.element   // "papa"
+// removeAt
+linkedlist.removeAt(1)  // true
+linkedlist.getHead().next.element   // "Billy"
+// remove
+linkedlist.append("papa")   // true
+linkedlist.remove("papa")   // true
+linkedlist.getHead().next.element   // "Billy"
+// indexOf
+linkedlist.indexOf("grandpa")   // 0
+linkedlist.indexOf("Tom")   // -1
+// size
+linkedlist.size()   // 3
+// isEmpty
+linkedlist.isEmpty()    // false
+linkedlist.remove("grandpa")
+linkedlist.remove("Billy")
+linkedlist.isEmpty()   //true
 ```

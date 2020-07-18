@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-07-18 02:15:52
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-18 23:31:02
+ * @LastEditTime: 2020-07-19 02:18:14
  * @FilePath: /spurv/ifoo/src/utils/datastructure/linked_list.ts
  */ 
 import { privateMode } from '../functions/index'
@@ -151,7 +151,7 @@ class LinkedList implements ILinkedList {
     
 }
 
-export const linkedList = (): ILinkedList | ProxyConstructor=> {
-    const l: ILinkedList = new LinkedList();
-    return privateMode(l);
+export const linkedList = (): ILinkedList | ProxyConstructor => {
+    const l: ILinkedList = new LinkedList()
+    return l
 }

@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-07-18 02:37:38
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-18 19:54:40
+ * @LastEditTime: 2020-07-19 02:18:43
  * @FilePath: /spurv/ifoo/test/linked_list.test.js
  */ 
 import { linkedList } from "../src/index";
@@ -9,9 +9,9 @@ import { linkedList } from "../src/index";
 test("append an element to the linkedlist", () => {
     const linkedlist = linkedList()
     linkedlist.append("grandpa")
-    expect(linkedlist._head.element).toBe("grandpa");
+    expect(linkedlist.getHead().element).toBe("grandpa");
     linkedlist.append("papa")
-    expect(linkedlist._head.next.element).toBe("papa");
+    expect(linkedlist.getHead().next.element).toBe("papa");
 });
 
 test("remove an element by specifying its position", () => {
@@ -20,9 +20,9 @@ test("remove an element by specifying its position", () => {
     linkedlist.append("papa")
     linkedlist.append("Billy")
     linkedlist.removeAt(1)
-    expect(linkedlist._head.element).toBe("grandpa")
-    expect(linkedlist._head.next.element).toBe("Billy")
-    expect(linkedlist._head.next.next).toBe(null)
+    expect(linkedlist.getHead().element).toBe("grandpa")
+    expect(linkedlist.getHead().next.element).toBe("Billy")
+    expect(linkedlist.getHead().next.next).toBe(null)
 });
 
 test("remove an element by specifying its value", () => {
@@ -33,9 +33,9 @@ test("remove an element by specifying its value", () => {
 
     linkedlist.remove("papa")
     
-    expect(linkedlist._head.element).toBe("grandpa")
-    expect(linkedlist._head.next.element).toBe("Billy")
-    expect(linkedlist._head.next.next).toBe(null)
+    expect(linkedlist.getHead().element).toBe("grandpa")
+    expect(linkedlist.getHead().next.element).toBe("Billy")
+    expect(linkedlist.getHead().next.next).toBe(null)
 });
 
 test("use indexOf to find an element's position", () => {
