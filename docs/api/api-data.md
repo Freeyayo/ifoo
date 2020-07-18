@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-30 01:45:54
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-19 02:20:09
+ * @LastEditTime: 2020-07-19 02:22:04
  * @FilePath: /spurv/ifoo/docs/api/api-data.md
 --> 
 ----
@@ -142,25 +142,32 @@ dict.length // 0
 >> The JavaScript implementation of the linked list datatructure and its methods 
 ```js
 const linkedlist = linkedList();
+
 // append
 linkedlist.append("grandpa")
 linkedlist.append("papa")
 linkedlist.append("Billy")
+
 // getHead
 linkedlist.getHead().element    // "grandpa"
 linkedlist.getHead().next.element   // "papa"
+
 // removeAt
 linkedlist.removeAt(1)  // true
 linkedlist.getHead().next.element   // "Billy"
+
 // remove
 linkedlist.append("papa")   // true
 linkedlist.remove("papa")   // true
 linkedlist.getHead().next.element   // "Billy"
+
 // indexOf
 linkedlist.indexOf("grandpa")   // 0
 linkedlist.indexOf("Tom")   // -1
+
 // size
 linkedlist.size()   // 3
+
 // isEmpty
 linkedlist.isEmpty()    // false
 linkedlist.remove("grandpa")
