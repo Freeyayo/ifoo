@@ -1,11 +1,9 @@
 /*
  * @Date: 2020-07-18 02:15:52
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-19 02:18:14
+ * @LastEditTime: 2020-07-19 10:34:03
  * @FilePath: /spurv/ifoo/src/utils/datastructure/linked_list.ts
  */ 
-import { privateMode } from '../functions/index'
-
 import {
     ILinkedList,
     LinkedListNode
