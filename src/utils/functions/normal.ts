@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-19 02:04:03
+ * @LastEditTime: 2020-08-03 00:02:03
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -14,6 +14,7 @@ import {
   PureFunctionCompose,
   PureFunctionCurry,
   PrivateMode,
+  RandomizeArray,
   RelationTree,
   RelationTreeOptions,
   SerializeBSTree,
@@ -185,6 +186,24 @@ export const privateMode: PrivateMode = (target: Record<string, any>): ProxyCons
     })
   }
   return _privatemode(target)
+}
+
+/**
+ * 
+ * @param arr Array<any>
+ * @description randomize an array
+ */
+export const randomizeArray: RandomizeArray<any> = (arr: Array<any>) => {
+  if(Array.isArray(arr)){
+    const size: number = arr.length;
+    for(let i=0; i<size; i++){
+      const random: number = Math.floor(Math.random()*size);
+      [arr[i], arr[random]] = [arr[random], arr[i]];
+    }
+    return arr;
+  }else{
+    throw new Error("randomizeArray needs an array as its argument")
+  }
 }
 
 /**

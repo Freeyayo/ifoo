@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:42:59
- * @LastEditTime: 2020-07-03 23:22:07
+ * @LastEditTime: 2020-08-03 00:02:16
  * @LastEditors: Conghao Cai🔧
  * @Description: In User Settings Edit
  * @FilePath: /spurv/ifoo/src/utils/functions/types/function_types.ts
@@ -40,6 +40,8 @@ type SortArrayByOptions = {
 }
 
 export type SortArrayBy = (arr: any[], options?: SortArrayByOptions) => any[];
+
+export type RandomizeArray<T> = (arr: Array<T>) => Array<T> | Error
 
 export type RelationTreeOptions = {
   root: string | number | boolean,
