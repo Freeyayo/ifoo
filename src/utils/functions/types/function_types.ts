@@ -12,6 +12,8 @@ export type SerializeBSTree = (root: TreeNode<number>) => string | null;
 
 export type DeserializeBSTree = (data: string) => TreeNode<number>;
 
+export type IsEqual = (obj1: any, obj2: any) => boolean;
+
 export type PureFunctionCompose<T> = (...f: T[]) => (x: any) => T;
 
 export type PureFunctionCurry<T> = (...args: Array< () => any | any>) => T;

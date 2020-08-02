@@ -10,6 +10,7 @@ export {
     compose,
     curry,
     deserialize,
+    isEqual,
     flatten,
     privateMode,
     relationTree,
