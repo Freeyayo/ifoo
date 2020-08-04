@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-28 23:02:23
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-14 23:11:18
+ * @LastEditTime: 2020-08-05 00:27:09
  * @FilePath: /spurv/ifoo/docs/api/api-helper.md
 --> 
 ----
@@ -75,6 +75,36 @@ flatten(nested2, { levels: 2 }) //[1, 1, 2, 3, 3, [4]]
 flatten(nested2, { levels: 3 }) //[1, 1, 2, 3, 3, 4]
 ```
 ----
+## I
+#### isEqual
+> `isEqual: IsEqual = (obj1: any, obj2: any) => boolean` **0.0.1**
+>> Compare two values of any types. `isEqual` doesn't do a referential compare, it will check every property on each object.
+```js
+const a = "a";
+const b = "b";
+const _a = "a";
+isEqual(a, b)   // false
+isEqual(a, _a)  // true
+
+const True = true;
+const False = false;
+const _True = true;
+isEqual(True, False)    // false
+isEqual(True, _True)    // true
+
+const objA = {name:"Spurv", age:10, bio:{cName: "Function", nation: "China", hobbies: ["soccer", "game", 101, false]}};
+const objB = {name:"Spurv", age:10, bio:{cName: "Function", nation: "China", hobbies: ["soccer", "game", 101, false]}};
+const objC = {name:"Spurv", age:10, bio:{cName: "Function", nation: "China", hobbies: ["baseball", "game", 101, false]}};
+isEqual(objA, objB)     // true
+isEqual(objA, objC)     // false
+
+const arrayWithObjectA = [1,2,3,4,{name: "Spurv", age: 20},6];
+const arrayWithObjectB = [1,2,3,4,{name: "Spurv", age: 20},6];
+const arrayWithObjectC = [1,2,3,4,{name: "Spurv", age: 21},6];
+isEqual(arrayWithObjectA, arrayWithObjectB) // true
+isEqual(arrayWithObjectA, arrayWithObjectC) // false
+```
+----
 ## P
 #### privateMode
 > `privateMode: PrivateMode = (target: Record<string, any>) => ProxyConstructor` **0.0.1**
@@ -100,6 +130,15 @@ HellenSecret.sayName()  // "Hellen"
 ```
 ----
 ## R
+#### randomizeArray
+> `randomizeArray: RandomizeArray<T> = (arr: Array<T>) => Array<T>` **0.0.1**
+>> Randomize an array.
+```js
+const arr = [1,2,3,4]
+
+randomizeArray(arr) // [2,1,4,3]
+randomizeArray(arr) // [4,1,2,3]
+```
 #### relationTree
 > `relationTree: RelationTree<T> = (data: Array<Record<string, any>> ,options: RelationTreeOptions) => T[]` **0.0.1**
 >> Construct a tree by connecting their relation in using given relalionship information. The constant `rtchildren` is necessary for all iteration to get each level's children. You can choose any level as its root.
