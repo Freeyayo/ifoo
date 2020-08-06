@@ -1,13 +1,13 @@
 <!--
  * @Date: 2020-06-22 23:51:38
  * @LastEditors: Conghao Cai🔧
- * @LastEditTime: 2020-07-19 11:08:17
+ * @LastEditTime: 2020-08-06 22:27:28
  * @FilePath: /spurv/ifoo/docs/getStart/install.md
 --> 
 
 - CDN
 ```html
-<script src="https://cdn.jsdelivr.net/npm/spurv@0.0.135/src/index.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/spurv@0.0.136/src/index.iife.js"></script>
 ```
 
 - NPM

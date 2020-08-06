@@ -1,7 +1,7 @@
 /*
  * @Author: Conghao Cai🔧
  * @Date: 2020-06-22 19:44:17
- * @LastEditTime: 2020-07-19 02:04:03
+ * @LastEditTime: 2020-08-03 00:02:03
  * @LastEditors: Conghao Cai🔧
  * @FilePath: /spurv/ifoo/src/utils/functions/normal.ts
  */
@@ -10,9 +10,11 @@ import {
   DeserializeBSTree,
   Flatten,
   FlattenOptions,
+  IsEqual,
   PureFunctionCompose,
   PureFunctionCurry,
   PrivateMode,
+  RandomizeArray,
   RelationTree,
   RelationTreeOptions,
   SerializeBSTree,
@@ -129,6 +131,37 @@ export const flatten: Flatten<number> = (
 
 /**
  * 
+ * @param obj1 any
+ * @param obj2 any
+ * @return boolean
+ * @description compare two with its properties or value
+ */
+export const isEqual: IsEqual = (obj1: any, obj2: any) => {
+	if(typeof obj1 === "object" && typeof obj2 === "object"){
+    if(Array.isArray(obj1) && Array.isArray(obj2) && obj1.length !== obj2.length) return false;
+		const props: Array<string> = Object.getOwnPropertyNames(obj1);
+		for(let i=0, len=props.length; i<len; i++){
+			const p = props[i];
+			if(obj1[p] !== obj2[p]){
+				if(typeof obj1[p] === "object" && typeof obj2[p] === "object"){
+					if(isEqual(obj1[p], obj2[p])){
+						continue
+					}else{
+						return false
+					}
+				}else{
+					return false
+				}
+			}
+		}
+		return true
+	}else{
+		return obj1 === obj2
+	}
+}
+
+/**
+ * 
  * @param target a constructor, class or object
  * @returns a proxy of target
  * @description error will be thrown as visiting the private properties and methods which start with '_'
@@ -153,6 +186,24 @@ export const privateMode: PrivateMode = (target: Record<string, any>): ProxyCons
     })
   }
   return _privatemode(target)
+}
+
+/**
+ * 
+ * @param arr Array<any>
+ * @description randomize an array
+ */
+export const randomizeArray: RandomizeArray<any> = (arr: Array<any>) => {
+  if(Array.isArray(arr)){
+    const size: number = arr.length;
+    for(let i=0; i<size; i++){
+      const random: number = Math.floor(Math.random()*size);
+      [arr[i], arr[random]] = [arr[random], arr[i]];
+    }
+    return arr;
+  }else{
+    throw new Error("randomizeArray needs an array as its argument")
+  }
 }
 
 /**
